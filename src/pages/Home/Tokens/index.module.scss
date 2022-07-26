@@ -1,0 +1,24 @@
+@import '../../../styles/config';
+
+.list {
+  margin: 0 auto;
+  max-width: 980px;
+}
+
+.item {
+  margin-bottom: 34px;
+  position: relative;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.tooltip{
+  position: absolute;
+  width: 20px;
+  right: 10px;
+  top: 10px;
+}
+
+

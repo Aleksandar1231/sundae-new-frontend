@@ -1,0 +1,26 @@
+@import '../../styles/config';
+
+.block {
+  @include flex(center);
+
+  border-radius: 15px;
+  border: 2px solid var(--color-text);
+  background-color: var(--info-background);
+  padding: 15px;
+}
+
+.icon {
+  @include size(24px);
+
+  margin-right: 10px;
+  color: #C4C4C4;
+}
+
+.text {
+  line-height: 1.7;
+  display: flex;
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    font-size: 14px;
+  }
+}

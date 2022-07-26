@@ -1,0 +1,26 @@
+@import "./styles/config";
+
+//button {
+//  border: 1px solid #fff;
+//  padding: 10px 20px;
+//  margin: 10px;
+//  border-radius: 5px;
+//  color: #fff;
+//}
+
+.preloader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-grey);
+  z-index: 20;
+}
+
+.content {
+  @include flex($direction: column);
+
+  padding-top: 95px;
+  min-height: 100vh;
+}

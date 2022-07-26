@@ -1,0 +1,14 @@
+:root {
+  --min-width: 375px;
+  --max-width: 1200px;
+
+  --grid-outher: 15px;
+  --grid-outher-fluid: -15px;
+
+  --default-transition: 0.3s;
+  --default-title-outher: 0 auto 34px;
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    --default-title-outher: 0 auto 40px;
+  }
+}

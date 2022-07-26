@@ -1,0 +1,123 @@
+@import 'src/styles/config';
+
+.block {
+  @include flex($align-items: center);
+
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  @include media-max(map_get($brackpoints, lg) - 1) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    padding: 15px 0;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateX(-100%);
+    transition: var(--default-transition);
+    background-color: var(--menu-color);
+    width: 100%;
+  }
+
+  &.active {
+    transform: translateX(0);
+  }
+}
+
+.item {
+  margin-right: 60px;
+
+  &.last {
+    margin-right: 0;
+  }
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    margin-right: 40px;
+  }
+
+  @include media-max(map_get($brackpoints, lg) - 1) {
+    padding: 10px 20px;
+    margin-right: 0;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+  }
+}
+
+.link {
+  font-weight: var(--medium);
+
+  &:hover,
+  &.active {
+    color: var(--color-secondary);
+  }
+}
+
+.pictures {
+  @include size(65px, 84px);
+
+  display: none;
+  position: relative;
+
+  @include media-max(map_get($brackpoints, lg) - 1) {
+    display: block;
+  }
+}
+
+.picture {
+  @include size(25px, 65px);
+
+  position: absolute;
+
+  &:nth-child(1) {
+    top: 5px;
+    left: 10px;
+    transform: rotateZ(-13deg);
+
+    img {
+      animation: slide-1 3s ease-in-out 0s infinite;
+    }
+  }
+
+  &:nth-child(2) {
+    top: 13px;
+    right: 7px;
+    transform: rotateZ(13deg);
+
+    img {
+      animation: slide-2 3s ease-in-out 0.1s infinite;
+    }
+  }
+}
+
+@keyframes slide-1 {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  50% {
+    transform: translate(-3px, -3px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes slide-2 {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  50% {
+    transform: translate(3px, -3px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+  }
+}

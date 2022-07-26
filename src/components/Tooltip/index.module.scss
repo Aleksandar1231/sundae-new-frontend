@@ -1,0 +1,56 @@
+@import '../../styles/config';
+
+.block {
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+
+  &:hover {
+
+    .wrapper {
+      display: block;
+    }
+  }
+}
+
+.icon {
+  @include size(24px);
+
+  color: #C4C4C4;
+}
+
+.wrapper {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-100%, -50%);
+  margin-left: -12px;
+  background-color: #C4C4C4;
+  border-radius: 15px;
+  padding: 15px 13px;
+  width: 240px;
+
+  &::before {
+    @include size(0);
+
+    position: absolute;
+    top: 50%;
+    right: 1px;
+    transform: translate(100%, -50%);
+    border-top: 10px solid transparent;
+    border-left: 12px solid #C4C4C4;
+    border-bottom: 10px solid transparent;
+    content: '';
+  }
+}
+
+.text {
+  text-align: center;
+  color: var(--color-grey);
+  font-size: 12px;
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    font-size: 14px;
+  }
+}

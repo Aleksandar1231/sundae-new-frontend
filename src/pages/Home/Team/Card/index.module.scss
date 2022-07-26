@@ -1,0 +1,42 @@
+@import '../../../../styles/config';
+
+.block {
+  width: 210px;
+  text-align: center;
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    width: 160px;
+  }
+}
+
+.photo {
+  @include size(100%, 250px);
+
+  margin-bottom: 14px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #FDAD3E 0%, #FE4F8E 47.4%, #C64FBB 100%);
+  animation: gradient-background 3s infinite linear;
+  padding: 2px;
+  @include media-max(map_get($brackpoints, md) - 1) {
+    height: 187px;
+  }
+}
+.photo img{
+  border-radius: 20px;
+}
+
+
+.name {
+  margin-bottom: 3px;
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    font-size: 18px;
+  }
+}
+
+.position {
+  text-align: center;
+  //text-transform: uppercase;
+  font-size: 14px;
+}

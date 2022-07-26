@@ -1,0 +1,43 @@
+@import 'functions';
+@import 'mixins/flexbox';
+@import 'mixins/rem-converter';
+@import 'mixins/size';
+@import 'mixins/transition';
+@import 'mixins/word-break';
+@import 'mixins/gradients';
+@import 'mixins/stroke';
+@import 'mixins/ellipsis';
+@import 'mixins/media-max';
+@import 'mixins/media-min';
+@import 'mixins/line-clamp';
+
+@mixin smooth-font {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin reset-button {
+  margin: 0;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  overflow: visible;
+}
+
+@mixin absolute-center($args...) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) $args;
+}
+
+@mixin font-size($size: 16px, $height: $size) {
+  line-height: $height / $size;
+  font-size: rem($size);
+}

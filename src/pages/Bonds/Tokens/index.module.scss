@@ -1,0 +1,44 @@
+@import '../../../styles/config';
+
+.col {
+  position: relative;
+
+  &.sm {
+    margin-bottom: 30px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &.lg {
+    margin-bottom: 30px;
+
+    &:nth-child(2) {
+
+      @include media-max(map_get($brackpoints, xl) - 1) {
+        order: 3;
+      }
+
+      @include media-max(map_get($brackpoints, md) - 1) {
+        order: 2;
+      }
+    }
+
+    &:nth-child(3) {
+
+      @include media-max(map_get($brackpoints, md) - 1) {
+        order: 3;
+      }
+    }
+  }
+}
+
+.tooltip {
+  @include size(23px);
+
+  position: absolute;
+  z-index: 1;
+  top: 15px;
+  right: 30px;
+}

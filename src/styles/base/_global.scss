@@ -1,0 +1,238 @@
+body {
+  @include smooth-font;
+
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  font-size: var(--font-size);
+  color: var(--font-color);
+  line-height: var(--line-height);
+  min-width: var(--min-width);
+
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--color-grey);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    background-clip: content-box;
+    background-color: var(--color-primary);
+  }
+}
+
+main {
+  position: relative;
+  padding-bottom: 270px;
+  overflow-x: hidden;
+  flex-grow: 1;
+  z-index: 2;
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  @include media-max(map_get($brackpoints, lg) - 1) {
+    padding-bottom: 200px;
+  }
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    padding-bottom: 120px;
+  }
+
+  @include media-max(map_get($brackpoints, sm) - 1) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+a,
+button {
+  cursor: pointer;
+  transition: var(--default-transition);
+}
+
+a {
+  color: var(--font-color);
+  text-decoration: none;
+}
+
+button {
+  @include reset-button;
+
+  overflow: hidden;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+svg,
+picture,
+img {
+  @include size(100%);
+
+  display: block;
+  object-fit: cover;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: var(--font-family-additional);
+  font-weight: var(--font-weight);
+  color: var(--color-title);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 48px;
+
+  @include media-max(map_get($brackpoints, lg)) {
+    font-size: 42px;
+  }
+
+  @include media-max(map_get($brackpoints, sm)) {
+    font-size: 32px;
+  }
+}
+
+h2 {
+  font-size: 48px;
+
+  @include media-max(map_get($brackpoints, lg)) {
+    font-size: 42px;
+  }
+
+  @include media-max(map_get($brackpoints, sm)) {
+    font-size: 32px;
+  }
+}
+
+h3 {
+  font-size: 42px;
+
+  @include media-max(map_get($brackpoints, lg)) {
+    font-size: 36px;
+  }
+}
+
+h4 {
+  font-size: 38px;
+}
+
+h5 {
+  font-size: 28px;
+
+  @include media-max(map_get($brackpoints, lg)) {
+    font-size: 24px;
+  }
+
+  @include media-max(map_get($brackpoints, sm)) {
+    font-size: 20px;
+  }
+}
+
+h6 {
+  font-size: 20px;
+}
+
+.gradient {
+  background: #C64FBB;
+  background: radial-gradient(at center, #FDAD3E, #C64FBB);
+}
+
+.gradient-background {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #FDAD3E 0%, #FE4F8E 47.4%, #C64FBB 100%);
+  animation: gradient-background 3s infinite linear;
+
+  &::before {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    left: 2px;
+    background-color: var(--color-grey);
+    border-radius: 19px;
+    content: '';
+  }
+}
+
+@keyframes gradient-background {
+  0% {
+    background-position: 0 80%;
+  }
+  50% {
+    background-position: 100% 20%;
+  }
+  100% {
+    background-position: 0 80%;
+  }
+}
+
+[data-theme='light'] {
+  --color-title: var(--color-grey);
+  --color-text: var(--color-grey);
+  --navigation-color: var(--color-white);
+  --menu-color: var(--color-white);
+  --icon-color: var(--color-primary);
+  --description-background: linear-gradient(180deg, rgba(191, 191, 191, 0) 0%, rgba(191, 191, 191, 0.5) 18.44%, rgba(191, 191, 191, 0.95) 50.52%, rgba(191, 191, 191, 0.5) 80.81%, rgba(191, 191, 191, 0) 100%);
+  --info-background: var(--color-white);
+
+  body {
+    background-color: var(--color-white);
+  }
+
+  .gradient-background {
+
+    &::before {
+      background-color: var(--color-white);
+    }
+  }
+}
+
+[data-theme='dark'] {
+  --color-title: var(--color-white);
+  --color-text: var(--color-white);
+  --navigation-color: var(--color-grey);
+  --menu-color: var(--color-grey);
+  --icon-color: var(--color-secondary);
+  --description-background: linear-gradient(180deg, rgba(84, 84, 84, 0) 0%, #353535 50.52%, rgba(84, 84, 84, 0) 100%);
+  --info-background: var(--color-grey);
+
+  body {
+    background-color: var(--color-grey);
+  }
+
+  .gradient-background {
+
+    &::before {
+      background-color: var(--color-grey);
+    }
+  }
+}
+
+
+.walletconnect-modal {
+
+  &__base {
+
+    a {
+      color: var(--color-grey);
+    }
+
+    img {
+      width: auto;
+    }
+  }
+}

@@ -1,0 +1,80 @@
+@import '../../../styles/config';
+
+.container {
+  max-width: 1040px;
+
+  &::before {
+    @include size(1500px, 2475px);
+
+    position: absolute;
+    top: 50%;
+    right: -490px;
+    transform: translateY(-50%);
+    background: radial-gradient(50% 50% at 50% 50%, #734E26 0%, rgba(55, 37, 17, 0) 100%);
+    z-index: -1;
+    content: '';
+  }
+}
+
+.row {
+  align-items: center;
+}
+
+.col {
+  position: relative;
+
+  &:nth-child(1) {
+
+    @include media-max(map_get($brackpoints, md) - 1) {
+      order: 2;
+    }
+  }
+
+  &:nth-child(2) {
+
+    @include media-max(map_get($brackpoints, md) - 1) {
+      order: 1;
+    }
+  }
+}
+
+.title,
+.text {
+  @include media-max(map_get($brackpoints, md) - 1) {
+    text-align: center;
+  }
+}
+
+
+.text {
+  margin: 26px 0;
+
+  @include media-min(map_get($brackpoints, xl) - 1) {
+    font-size: 18px;
+  }
+}
+
+.button {
+  max-width: 200px;
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    max-width: 100%;
+  }
+}
+
+.picture {
+  border-radius: 33px;
+  margin-right: 0;
+  margin-left: auto;
+  overflow: hidden;
+  width: 100%;
+  max-width: 335px;
+
+  @include media-min(map_get($brackpoints, xl)) {
+    max-width: 350px;
+  }
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    margin-right: auto;
+  }
+}

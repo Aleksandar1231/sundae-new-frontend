@@ -1,0 +1,10 @@
+@import '../../styles/config';
+
+.block {
+  @include size(100%);
+  @include flex(center, center);
+}
+
+.wrapper {
+  @include size(150px);
+}

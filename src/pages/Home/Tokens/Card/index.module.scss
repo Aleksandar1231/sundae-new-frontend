@@ -1,0 +1,160 @@
+@import '../../../../styles/config';
+
+.block {
+  //height: 190px;
+  background-size: 200% 200%;
+  animation: background 3s infinite linear;
+
+  @include media-max(map_get($brackpoints, lg)) {
+    height: 378px;
+  }
+
+  @include media-max(map_get($brackpoints, sm)) {
+    height: 420px;
+  }
+
+  &:hover {
+    animation: background 1s infinite linear;
+  }
+}
+
+@keyframes background {
+  0% {
+    background-position: 0 80%;
+  }
+  50% {
+    background-position: 100% 20%;
+  }
+  100% {
+    background-position: 0 80%;
+  }
+}
+
+.wrapper {
+  @include size(100%);
+
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr 1fr 150px;
+  align-items: flex-end;
+  padding: 40px 30px;
+  line-height: 1;
+
+  @include media-max(map_get($brackpoints, lg)) {
+    grid-template-columns: auto;
+    padding: 25px 30px;
+  }
+}
+
+.top,
+.center {
+  display: grid;
+
+  @include media-max(map_get($brackpoints, lg) - 1) {
+    margin-bottom: 30px;
+  }
+}
+
+.top {
+  position: relative;
+  grid-template-columns: 80px 1fr;
+  align-items: flex-end;
+  column-gap: 45px;
+
+  @include media-max(map_get($brackpoints, lg) - 1) {
+
+    &::after {
+      position: absolute;
+      bottom: -15px;
+      right: 0;
+      left: 0;
+      height: 1px;
+      background-color: rgba(225, 225, 225, 0.5);
+      content: '';
+    }
+  }
+
+  @include media-max(map_get($brackpoints, sm) - 1) {
+    grid-template-columns: repeat(2, 1fr);
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.center {
+  grid-template-columns: repeat(3, 120px);
+  column-gap: 35px;
+
+  @include media-max(map_get($brackpoints, lg) - 1) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include media-max(map_get($brackpoints, sm) - 1) {
+    grid-template-columns: auto;
+  }
+}
+
+.label {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: var(--medium);
+
+  &.uppercase {
+    text-transform: uppercase;
+  }
+
+  @include media-max(map_get($brackpoints, sm) - 1) {
+    margin-bottom: 0;
+  }
+}
+
+.value {
+  font-size: 18px;
+  font-weight: var(--bold);
+}
+
+.price {
+  margin-top: 10px;
+  font-family: var(--font-family);
+  font-weight: var(--bold);
+  line-height: 0.8;
+}
+
+.item {
+  @include media-max(map_get($brackpoints, sm) - 1) {
+    @include flex(space-between, flex-end);
+
+    margin-bottom: 15px;
+  }
+}
+
+.right {
+  @include media-max(map_get($brackpoints, sm) - 1) {
+    text-align: right;
+  }
+}
+
+.button {
+
+  &:first-child {
+    margin-bottom: 19px;
+  }
+}
+.button1 {
+
+  &:first-child {
+    margin-bottom: 35px;
+  }
+}
+
+.picture {
+  @include size(80px);
+
+  margin-bottom: 6px;
+
+  @include media-max(map_get($brackpoints, sm) - 1) {
+    @include size(68px);
+  }
+}

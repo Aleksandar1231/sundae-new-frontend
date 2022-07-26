@@ -1,0 +1,267 @@
+@import '../../../styles/config';
+
+.fluid {
+  position: relative;
+
+  &:nth-child(2) {
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: -25px;
+      right: -25px;
+      height: 1px;
+      transform: translateY(-50px);
+      background: linear-gradient(90deg, #FDAD3E 0%, #FE4F8E 47.4%, #C64FBB 100%);
+      content: '';
+
+      @include media-max(map_get($brackpoints, md) - 1) {
+        @include size(1px, auto);
+
+        top: 35px;
+        bottom: 40px;
+        left: var(--grid-outher);
+        transform: none;
+        background: linear-gradient(0, #FDAD3E 0%, #FE4F8E 47.4%, #C64FBB 100%);
+      }
+    }
+  }
+}
+
+.title {
+  margin: var(--default-title-outher);
+  text-align: center;
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    margin: 0 auto;
+  }
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    margin: var(--default-title-outher);
+  }
+}
+
+.block {
+  @include flex($align-items: center);
+
+  position: relative;
+  padding-bottom: 100px;
+  min-height: 750px;
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-left: 28px;
+    padding-bottom: 0;
+    min-height: auto;
+  }
+}
+
+.part {
+  position: relative;
+  margin-right: 120px;
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    margin-right: 100px;
+  }
+
+  @include media-max(map_get($brackpoints, lg) - 1) {
+    margin-right: 38px;
+  }
+
+  &::after {
+    @include media-max(map_get($brackpoints, md) - 1) {
+      @include size(28px, 1px);
+
+      position: absolute;
+      top: 35px;
+      left: -28px;
+      background: linear-gradient(180deg, #FDAD3E 0%, #FE4F8E 47.4%, #C64FBB 100%);
+      content: '';
+    }
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:nth-child(even) {
+
+    .wrap {
+      bottom: 180px;
+
+      &::before {
+        top: 34px;
+        left: -50px;
+        border-top: 1px solid var(--color-text);
+        height: 215px;
+      }
+
+      @include media-max(map_get($brackpoints, xl) - 1) {
+        bottom: 160px;
+      }
+    }
+  }
+
+  &:nth-child(odd) {
+
+    .wrap {
+      top: 200px;
+
+      &::before {
+        top: -130px;
+        left: -50px;
+        border-bottom: 1px solid var(--color-text);
+        height: 164px;
+      }
+
+      @include media-max(map_get($brackpoints, xl) - 1) {
+        top: 182px;
+      }
+    }
+  }
+}
+
+.step {
+  @include size(120px, 70px);
+  @include flex(center, center);
+
+  z-index: 1;
+  font-family: var(--font-family-additional);
+  font-size: 20px;
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+.wrap {
+  position: absolute;
+  left: 110px;
+  min-width: 355px;
+  height: 140px;
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    left: 50px;
+    min-width: 220px;
+  }
+
+  @include media-max(map_get($brackpoints, lg) - 1) {
+    min-width: 180px;
+  }
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    position: static;
+    margin-bottom: 40px;
+    height: auto;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: '';
+
+    @include media-max(map_get($brackpoints, md) - 1) {
+      display: none;
+    }
+  }
+
+  &::after {
+    @include size(10px);
+
+    top: 29px;
+    left: -25px;
+    border-radius: 50%;
+    background-color: var(--color-text);
+  }
+
+  &::before {
+    border-left: 1px solid var(--color-text);
+    width: 30px;
+  }
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.label {
+  position: relative;
+}
+
+.data {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.list {
+  padding-left: 0;
+  list-style: none;
+  font-size: 14px;
+
+  &.primary {
+
+    .item {
+
+      &::before {
+        background-image: url("data:image/svg+xml,%3Csvg width='14' height='15' viewBox='0 0 14 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 0.968506C3.25391 0.968506 0.21875 4.03101 0.21875 7.74976C0.21875 11.4958 3.25391 14.531 7 14.531C10.7188 14.531 13.7812 11.4958 13.7812 7.74976C13.7812 4.03101 10.7188 0.968506 7 0.968506ZM7 2.28101C10.0078 2.28101 12.4688 4.74194 12.4688 7.74976C12.4688 10.7849 10.0078 13.2185 7 13.2185C3.96484 13.2185 1.53125 10.7849 1.53125 7.74976C1.53125 4.74194 3.96484 2.28101 7 2.28101ZM10.8281 5.86304L10.1992 5.23413C10.0898 5.09741 9.87109 5.09741 9.73438 5.23413L5.87891 9.06226L4.23828 7.42163C4.10156 7.28491 3.91016 7.28491 3.77344 7.42163L3.14453 8.02319C3.03516 8.15991 3.03516 8.37866 3.14453 8.48804L5.63281 11.0037C5.76953 11.1404 5.96094 11.1404 6.09766 11.0037L10.8281 6.32788C10.9375 6.19116 10.9375 5.97241 10.8281 5.86304Z' fill='url(%23paint0_linear_515_99)'/%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear_515_99' x1='7' y1='-0.000244141' x2='7' y2='15.9998' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23FDAD3E'/%3E%3Cstop offset='0.484375' stop-color='%23FE4F8E'/%3E%3Cstop offset='1' stop-color='%23C64FBB'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
+      }
+    }
+  }
+
+  &.alt {
+
+    .item {
+
+      &::before {
+        background-image: url("data:image/svg+xml,%3Csvg width='14' height='15' viewBox='0 0 14 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.17563 0.501953C3.42953 0.501953 0.394377 3.56445 0.394377 7.2832C0.394377 11.0293 3.42953 14.0645 7.17563 14.0645C10.8944 14.0645 13.9569 11.0293 13.9569 7.2832C13.9569 3.56445 10.8944 0.501953 7.17563 0.501953ZM7.17563 1.81445C10.1834 1.81445 12.6444 4.27539 12.6444 7.2832C12.6444 10.3184 10.1834 12.752 7.17563 12.752C4.14047 12.752 1.70688 10.3184 1.70688 7.2832C1.70688 4.27539 4.14047 1.81445 7.17563 1.81445ZM11.0038 5.39648L10.3748 4.76758C10.2655 4.63086 10.0467 4.63086 9.91 4.76758L6.05453 8.5957L4.41391 6.95508C4.27719 6.81836 4.08578 6.81836 3.94906 6.95508L3.32016 7.55664C3.21078 7.69336 3.21078 7.91211 3.32016 8.02148L5.80844 10.5371C5.94516 10.6738 6.13656 10.6738 6.27328 10.5371L11.0038 5.86133C11.1131 5.72461 11.1131 5.50586 11.0038 5.39648Z' fill='%23C4C4C4'/%3E%3C/svg%3E%0A");
+      }
+    }
+  }
+
+  &.light {
+
+    &.list {
+
+      &.alt {
+
+        li {
+
+          &::before {
+            background-image: url("data:image/svg+xml,%3Csvg width='14' height='15' viewBox='0 0 14 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.17563 0.501953C3.42953 0.501953 0.394377 3.56445 0.394377 7.2832C0.394377 11.0293 3.42953 14.0645 7.17563 14.0645C10.8944 14.0645 13.9569 11.0293 13.9569 7.2832C13.9569 3.56445 10.8944 0.501953 7.17563 0.501953ZM7.17563 1.81445C10.1834 1.81445 12.6444 4.27539 12.6444 7.2832C12.6444 10.3184 10.1834 12.752 7.17563 12.752C4.14047 12.752 1.70688 10.3184 1.70688 7.2832C1.70688 4.27539 4.14047 1.81445 7.17563 1.81445ZM11.0038 5.39648L10.3748 4.76758C10.2655 4.63086 10.0467 4.63086 9.91 4.76758L6.05453 8.5957L4.41391 6.95508C4.27719 6.81836 4.08578 6.81836 3.94906 6.95508L3.32016 7.55664C3.21078 7.69336 3.21078 7.91211 3.32016 8.02148L5.80844 10.5371C5.94516 10.6738 6.13656 10.6738 6.27328 10.5371L11.0038 5.86133C11.1131 5.72461 11.1131 5.50586 11.0038 5.39648Z' fill='%23393938'/%3E%3C/svg%3E%0A");
+          }
+        }
+      }
+    }
+  }
+}
+
+.item {
+  position: relative;
+  margin-bottom: 8px;
+  padding-left: 25px;
+  font-size: 14px;
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    font-size: 12px;
+  }
+
+  &::before {
+    @include size(16px);
+
+    position: absolute;
+    top: 2px;
+    left: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    content: '';
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

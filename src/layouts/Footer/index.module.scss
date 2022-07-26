@@ -1,0 +1,193 @@
+@import '../../styles/config';
+
+.block {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 30px;
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    padding-bottom: 0;
+  }
+
+  @include media-max(map_get($brackpoints, sm) - 1) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &::before {
+    position: absolute;
+    right: -45px;
+    left: -45px;
+    bottom: -70px;
+    height: 505px;
+    background: linear-gradient(0, #353535 0%, rgba(84, 84, 84, 0) 100%);
+    z-index: 0;
+    content: '';
+
+    @include media-max(map_get($brackpoints, xl) - 1) {
+      height: 305px;
+    }
+
+    @include media-max(map_get($brackpoints, md) - 1) {
+      bottom: 0;
+    }
+  }
+
+  &.alt {
+
+    .wrapper {
+      @include size(100%);
+
+      overflow: hidden;
+
+      &::before,
+      &::after {
+        @include size(1500px, 2475px);
+
+        position: absolute;
+        z-index: -1;
+        content: '';
+
+        @include media-max(map_get($brackpoints, xl) - 1) {
+          @include size(1313px, 2165px);
+        }
+      }
+
+      &::before {
+        right: -465px;
+        bottom: 0;
+        background: radial-gradient(50% 50% at 50% 50%, #734E26 0%, rgba(55, 37, 17, 0) 100%);
+
+        @include media-max(map_get($brackpoints, xl) - 1) {
+          right: -605px;
+          bottom: 225px;
+        }
+
+        @include media-max(map_get($brackpoints, md) - 1) {
+          @include size(805px, 1325px);
+
+          right: -435px;
+          bottom: 812px;
+        }
+      }
+
+      &::after {
+        bottom: -275px;
+        left: -565px;
+        background: radial-gradient(50% 50% at 50% 50%, #792F70 0%, rgba(89, 59, 85, 0) 100%);
+
+        @include media-max(map_get($brackpoints, xl) - 1) {
+          left: -712px;
+          bottom: -360px;
+        }
+
+        @include media-max(map_get($brackpoints, md) - 1) {
+          @include size(1085px, 1790px);
+
+          left: -585px;
+          bottom: 42px;
+        }
+      }
+    }
+  }
+}
+
+.col {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.top {
+  margin-bottom: 20px;
+}
+
+.bottom {
+  text-align: center;
+}
+
+.row {
+  align-items: center;
+}
+
+.navigation {
+  @include flex(flex-end, center);
+
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  height: 100%;
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    flex-wrap: wrap;
+  }
+}
+
+.item {
+  margin: 10px 0;
+  width: 50%;
+  text-align: center;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  @include media-min(map_get($brackpoints, md) - 1) {
+    margin: 0 52px 0 0;
+    width: auto;
+    text-align: left;
+  }
+}
+
+.text,
+.link {
+
+  &.sm {
+    white-space: nowrap;
+    font-size: 12px;
+  }
+}
+
+.link {
+  text-decoration: underline;
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--color-secondary);
+  }
+}
+
+.rules {
+  @include flex($align-items: center, $wrap: nowrap);
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    justify-content: center;
+  }
+}
+
+.divider {
+  @include size(1px, 10px);
+
+  margin: 0 5px;
+  background-color: var(--color-text);
+  flex-shrink: 0;
+}
+
+.toggle {
+  position: absolute;
+  right: var(--grid-outher);
+  top: -180px;
+  z-index: 1;
+
+  @include media-min(map_get($brackpoints, md) - 1) {
+    position: static;
+    margin-right: 0;
+    margin-left: auto;
+    transform: translateX(5px);
+    width: 105px;
+  }
+}

@@ -1,0 +1,58 @@
+@import '../../../styles/config';
+
+.section {
+  padding-bottom: 0;
+}
+
+.title,
+.text,
+.link {
+  color: var(--color-white);
+}
+
+.banner {
+  @include flex(center, center, column);
+
+  padding: 30px 55px;
+  border-radius: 35px;
+  text-align: center;
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    padding: 40px 60px;
+  }
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    padding: 40px 25px;
+  }
+}
+
+.text {
+  margin: 30px auto;
+  max-width: 520px;
+
+  @include media-min(map_get($brackpoints, xl)) {
+    font-size: 18px;
+  }
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    max-width: 200px;
+  }
+}
+
+.link {
+  text-decoration: underline;
+  font-size: 14px;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.button {
+  margin-bottom: 16px;
+  max-width: 200px;
+
+  @include media-max(map_get($brackpoints, md)) {
+    max-width: 100%;
+  }
+}

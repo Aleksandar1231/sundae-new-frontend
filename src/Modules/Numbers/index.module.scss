@@ -1,0 +1,65 @@
+@import '../../styles/config';
+
+.section {
+
+  &.inner {
+
+    .group {
+      max-width: 685px;
+    }
+  }
+}
+
+.container {
+  max-width: 1090px;
+}
+
+.row {
+  justify-content: center;
+  text-align: center;
+}
+
+.col {
+  margin-bottom: 20px;
+
+  @include media-min(map_get($brackpoints, md)) {
+    margin-bottom: 0;
+  }
+
+  &:first-child,
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.item {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.group {
+  margin: var(--default-title-outher);
+  max-width: 470px;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  margin-bottom: 12px;
+}
+
+.text {
+
+  @include media-min(map_get($brackpoints, md)) {
+    font-size: 18px;
+  }
+}
+
+.icon {
+  @include size(45px);
+
+  margin: 0 auto 30px;
+  color: var(--icon-color);
+}

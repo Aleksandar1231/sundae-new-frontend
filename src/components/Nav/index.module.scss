@@ -1,0 +1,112 @@
+@import 'src/styles/config';
+
+.block {
+  position: fixed;
+  top: 11px;
+  left: 0;
+  right: 0;
+  z-index: 11;
+  padding: 5px 0;
+  transition: var(--default-transition);
+
+  &.fixed {
+    top: 0;
+    background-color: var(--navigation-color);
+  }
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  @include media-max(map_get($brackpoints, sm) - 1) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.wrapper {
+  @include flex($align-items: center);
+}
+
+.cell {
+  height: 100%;
+
+  &:nth-child(1) {
+    display: none;
+
+    @include media-max(map_get($brackpoints, lg) - 1) {
+      display: block;
+      margin-right: 15px;
+    }
+  }
+
+  &:nth-child(3) {
+    margin-left: auto;
+    margin-right: 60px;
+
+    @include media-max(map_get($brackpoints, xl) - 1) {
+      margin-right: 40px;
+    }
+
+    @include media-max(map_get($brackpoints, lg) - 1) {
+      margin-right: 0;
+    }
+  }
+}
+
+.toggle {
+  @include flex(center, center, column);
+  @include size(30px);
+
+  cursor: pointer;
+  position: relative;
+  z-index: 11;
+
+  * {
+    @include size(23px, 2px);
+
+    margin: 3px 0;
+    border-radius: 3px;
+    transition: var(--default-transition);
+
+    &:nth-child(1) {
+      background-color: rgba(253, 173, 62, 0.8);
+    }
+
+    &:nth-child(2) {
+      background-color: rgba(254, 123, 104, 0.8);
+    }
+
+    &:nth-child(3) {
+      background-color: rgba(254, 123, 104, 1);
+    }
+  }
+
+  &.active {
+
+    * {
+
+      &:nth-child(1) {
+        transform: translateY(8px) rotateZ(45deg);
+      }
+
+      &:nth-child(2) {
+        transform: translateX(50%);
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        transform: translateY(-8px) rotateZ(-45deg);
+      }
+    }
+  }
+}
+
+.button {
+  @include size(160px, 45px);
+
+  @include media-max(map_get($brackpoints, sm) - 1) {
+    @include size(140px, 40px);
+  }
+}

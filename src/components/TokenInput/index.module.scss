@@ -1,0 +1,31 @@
+@import '../../styles/config';
+
+
+.desc {
+  text-align: left;
+}
+
+.input {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 40px;
+
+}
+
+.input_item {
+  display: block;
+  margin-bottom: 5px;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid;
+  outline:none;
+}
+
+.input_item.dark {
+  color: #ffffff;
+
+  &::before {
+    border-bottom: 1px solid rgb(255 255 255);
+  }
+}
+

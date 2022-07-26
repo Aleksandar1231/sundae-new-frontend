@@ -1,0 +1,87 @@
+@import '../../styles/config';
+
+.block {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 11;
+  background: rgba(53, 53, 53, 0.95);
+
+  @include media-max(map_get($brackpoints, md)) {
+    padding: 20px;
+  }
+
+  &.active {
+    @include flex(center, center);
+  }
+}
+
+.content {
+  padding: 60px 65px;
+  width: 100%;
+  max-width: 480px;
+
+  @include media-max(map_get($brackpoints, md)) {
+    padding: 40px 45px;
+  }
+
+  @include media-max(map_get($brackpoints, sm)) {
+    padding: 30px 35px;
+  }
+}
+
+.title,
+.button {
+  position: relative;
+}
+
+.button {
+  @include flex(center, center);
+  @include size(100%, 55px);
+
+  overflow: hidden;
+  padding: 0 20px;
+  margin-bottom: 27px;
+  border-radius: 20px;
+  border: 1px solid var(--color-text);
+
+  &:last-child {
+    margin: 0;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.label {
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.icon {
+  @include size(35px);
+
+  margin-right: 15px;
+}
+
+.title {
+  margin-bottom: 25px;
+  text-align: center;
+  color: var(--color-title);
+}
+
+.close {
+  @include size(16px);
+
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  transition: var(--default-transition);
+  background-image: url("data:image/svg+xml,%3Csvg width='18' height='19' viewBox='0 0 18 19' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L16.9099 16.9099M1.04504 17.4548L16.9549 1.54493' stroke='url(%23paint0_linear_960_364)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear_960_364' x1='17.5' y1='1.00001' x2='0.500009' y2='18' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23C64FBB'/%3E%3Cstop offset='0.5' stop-color='%23FE4F8E'/%3E%3Cstop offset='1' stop-color='%23FDAD3E'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
+  background-size: cover;
+}

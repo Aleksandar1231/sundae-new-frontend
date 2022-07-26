@@ -1,0 +1,89 @@
+@import '../../../../styles/config';
+
+.block {
+  margin: 0 auto;
+  background-size: 200% 200%;
+  animation: background 3s infinite linear;
+  padding: 30px;
+  height: 380px;
+
+  &:hover {
+    animation: background 1s infinite linear;
+  }
+}
+
+@keyframes background {
+  0% {
+    background-position: 0 80%;
+  }
+  50% {
+    background-position: 100% 20%;
+  }
+  100% {
+    background-position: 0 80%;
+  }
+}
+
+.wrapper {
+  @include flex($direction: column);
+  @include size(100%);
+
+  position: relative;
+}
+
+.top {
+  @include flex(center, center);
+}
+
+.center {
+  @include flex(center, center, column);
+
+  flex-grow: 1;
+}
+
+.item {
+  @include flex(center, center);
+
+  margin-bottom: 45px;
+  text-align: center;
+}
+
+.picture {
+  @include size(80px);
+
+  margin-bottom: 7px;
+}
+
+.label,
+.subtitle {
+  font-weight: var(--medium);
+}
+
+.title {
+  text-transform: uppercase;
+}
+
+.label {
+  font-size: 14px;
+}
+
+.button {
+  margin: 0 auto;
+  //max-width: 160px;
+  white-space: nowrap;
+  text-align: center;
+  & button{
+    width: auto;
+    display: inline-block;
+    padding: 0 27px;
+  }
+}
+
+.icon {
+  margin-top: -35px;
+  color: var(--color-text);
+
+  svg {
+    fill: currentColor;
+  }
+}

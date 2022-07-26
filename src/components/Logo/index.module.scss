@@ -1,0 +1,32 @@
+@import '../../styles/config';
+
+.block {
+  @include size(168px, 65px);
+
+  @include media-max(map_get($brackpoints, sm)) {
+    @include size(102px, 35px);
+
+    .img {
+      @include size(35px);
+    }
+  }
+}
+
+.link {
+  @include flex(center, center);
+}
+
+.text {
+  flex-grow: 1;
+
+  svg {
+    margin-left: -8px;
+    fill: var(--color-text);
+  }
+}
+
+.img {
+  @include size(65px);
+
+  transform: translateX(-10px);
+}

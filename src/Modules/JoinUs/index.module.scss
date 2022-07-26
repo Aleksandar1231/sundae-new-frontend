@@ -1,0 +1,76 @@
+@import '../../styles/config';
+
+.section {
+
+  &.last {
+    padding-bottom: 0;
+  }
+}
+
+.container {
+  max-width: 860px;
+  text-align: center;
+}
+
+.title {
+  margin: var(--default-title-outher);
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    max-width: 650px;
+  }
+}
+
+.actions {
+  @include flex(center, center);
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    flex-direction: column;
+  }
+}
+
+.link {
+  @include flex(center, center);
+  @include size(100%, 80px);
+
+  margin-right: 25px;
+  max-width: 400px;
+  background-size: 300% 300%;
+
+  &:last-child {
+    margin: 0;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    max-width: 330px;
+  }
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    margin-right: 0;
+    margin-bottom: 29px;
+    max-width: 335px;
+  }
+}
+
+.icon,
+.text {
+  position: relative;
+}
+
+.icon {
+  @include size(45px);
+
+  margin-right: 8px;
+
+  @include media-max(map_get($brackpoints, sm)) {
+    @include size(40px);
+  }
+}
+
+.text {
+  color: var(--color-text);
+  font-size: 20px;
+}

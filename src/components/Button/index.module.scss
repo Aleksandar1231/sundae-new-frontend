@@ -1,0 +1,118 @@
+@import '../../styles/config';
+
+.button {
+  @include size(100%, 45px);
+  @include flex(center, center);
+
+  border-radius: 15px;
+  padding: 0 20px;
+  min-width: 90px;
+  font-size: 14px;
+  font-family: var(--font-family-additional);
+  text-transform: uppercase;
+
+&.disabled {
+  background: #BFBFBF !important;
+  color: #5F5F5F !important;
+  &:hover {
+    background: #BFBFBF !important;
+    color: #5F5F5F !important;
+  }
+}
+
+  &.white {
+    border: 1px solid var(--color-white);
+    color: var(--color-white);
+
+    &:hover {
+      background-color: var(--color-white);
+      color: var(--color-grey);
+    }
+  }
+
+  &.additional {
+    height: 100%;
+  }
+
+  &.light {
+
+    &.button {
+      &.primary {
+        background-color: var(--color-grey);
+        color: var(--color-white);
+
+        &:hover {
+          color: var(--color-white);
+          background-color: var(--color-primary);
+        }
+      }
+
+      &.alt {
+        border: 1px solid var(--color-grey);
+        color: var(--color-grey);
+
+        &:hover {
+          color: var(--color-white);
+          background-color: var(--color-grey);
+        }
+      }
+
+      &.additional {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+
+        &:hover {
+          background-color: var(--color-grey);
+          color: var(--color-white)
+        }
+      }
+    }
+  }
+
+  &.dark {
+
+    &.button {
+
+      &.primary {
+        background-color: var(--color-white);
+        color: var(--color-grey);
+
+        &:hover {
+          color: var(--color-white);
+          background-color: var(--color-primary);
+        }
+      }
+
+      &.alt {
+        border: 1px solid var(--color-white);
+        color: var(--color-white);
+
+        &:hover {
+          color: var(--color-grey);
+          background-color: var(--color-white);
+        }
+      }
+
+      &.additional {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+
+        &:hover {
+          background-color: var(--color-white);
+          color: var(--color-grey)
+        }
+      }
+    }
+  }
+}
+.tooltip{
+  position: absolute;
+  right: 8px;
+  top: 7px;
+  & svg{
+    width: 12px;
+  }
+}
+.cont{
+  position: relative;
+}
