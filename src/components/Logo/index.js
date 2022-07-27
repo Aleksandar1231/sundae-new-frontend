@@ -14,7 +14,7 @@ const Logo = () => {
                 <img
                     loading={'lazy'}
                     className={styles.img}
-                    src={"/img/logo.png"}
+                    src={"/img/sundaelogo.png"}
                     alt={"Sundae Finance"}
                 />
                 <span className={styles.text}>

@@ -31,7 +31,7 @@ const Banner = () => {
                         id={'banner-top'}
                     >
                         <div className={styles.left}>
-                            <h1 className={styles.title}>The Sweetest Protocol on the Avalanche Network!</h1>
+                            <h1 className={styles.title}>The Sweetest Protocol on Avalanche</h1>
                             <p className={styles.text}>A seigniorage protocol designed to expand and contract supply similar to the way central banks trade fiscal debt to stabilize purchasing power. All of which provided without any rebases or collateral risk.</p>
                             <p className={styles.label}>Total Value Locked</p>
                             <CountUp className={styles.value} end={TVL} separator="," prefix="$"/>
