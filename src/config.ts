@@ -78,7 +78,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   StrawAvaxLPTShareRewardPool: {
     name: 'Earn STRAW by STRAW-AVAX LP',
     poolId: 1,
-    sectionInUI: 2,
+    sectionInUI: 12,
     contract: 'StrawAvaxLPTShareRewardPool',
     depositTokenName: 'STRAW-AVAX LP',
     earnTokenName: 'STRAW',
@@ -120,7 +120,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   FudgeLPTShareRewardPool: {
     name: 'Earn STRAW by Staking FUDGE',
     poolId: 3,
-    sectionInUI: 2,
+    sectionInUI: 12,
     contract: 'FudgeLPTShareRewardPool',
     depositTokenName: 'FUDGE',
     earnTokenName: 'STRAW',
