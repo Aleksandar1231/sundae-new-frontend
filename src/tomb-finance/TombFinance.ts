@@ -630,6 +630,13 @@ export class TombFinance {
   //===================== GET ASSET STATS =============================
   //=========================== END ===================================
   //===================================================================
+  
+  async getBoardroomPrintRate() : Promise<number> {
+    const {Masonry} = this.contracts;
+    const snapshotIndex = await Masonry.latestSnapshotIndex();
+    const currentEpoch = await Masonry.epoch();
+    return (snapshotIndex * 225) / currentEpoch;
+  }
 
   async getCurrentEpoch(): Promise<BigNumber> {
     const { Treasury } = this.contracts;

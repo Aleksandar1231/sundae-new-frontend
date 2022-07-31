@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useMemo} from "react";
 import {ReactTitle} from 'react-meta-tags';
 
 import JoinUs from "../../Modules/JoinUs";
@@ -14,24 +14,18 @@ import Banner from "./Banner";
 import CTA from "./CTA";
 import Footer from "../../layouts/Footer";
 
-const numbers = [
-    {
-        title: "3.1 Daily Volume",
-        text: "Quantifying the buying and selling of the last 24 hours.",
-        icon: 'daily'
-    },
-    {
-        title: "XX.XX Treasury Value",
-        text: "Accumulation of protocol owned liquitity and protocol generated revenue.",
-        icon: 'treasury'
-    },
-    {
-        title: "XX.XX Transactions",
-        text: "Total amount of transactions accumulated to date.",
-        icon: 'transactions'
-    }
-]
+import useGetBoardroomPrintRate from '../../hooks/getBoardroomPrintRate';
+import useCurrentEpoch from '../../hooks/useCurrentEpoch';
+import useCashPriceInEstimatedTWAP from '../../hooks/useCashPriceInEstimatedTWAP';
+// const printRate = useGetBoardroomPrintRate();
+// const currentEpoch = useCurrentEpoch();
+
 const Main = () => {
+const printRate = useGetBoardroomPrintRate().toFixed(2);
+const currentEpoch = Number(useCurrentEpoch());
+const cashStat = useCashPriceInEstimatedTWAP();
+const scalingFactor = useMemo(() => (cashStat ? Number(cashStat.priceInDollars).toFixed(4) : null), [cashStat]);
+
 
     return (
         <>
@@ -46,8 +40,27 @@ const Main = () => {
                 <Tokens/>
                 <Numbers
                     title={'Numbers Speak for Themselves'}
-                    description={'An ever-growing ecosystem built with success for our investors in mind. Check out our launch statistics since January that showscases our trajectory.'}
-                    info={numbers}
+                    description={'An ever-growing ecosystem built with success for our investors in mind. Check out our statistics since February that showscases our trajectory.'}
+                    info={
+                        [
+    
+                            {
+                                title: currentEpoch,
+                                text: "Total number of epochs the protocol has been deployed and operating.",
+                                icon: 'daily'
+                            },
+                            {
+                                title: printRate+"%",
+                                text: "The ratio at which the protocol has remained above peg and printing.",
+                                icon: 'treasury'
+                            },
+                            {
+                                title: scalingFactor,
+                                text: "A reflection of the current time weighted average price.",
+                                icon: 'transactions'
+                            }
+                        ]
+                    }
                     page={'home'}
                 />
                 <Community/>

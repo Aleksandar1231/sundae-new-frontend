@@ -5,6 +5,7 @@ const Home = lazy(() => import("../pages/Home"));
 const Bonds = lazy(() => import("../pages/Bonds"));
 const Boardrooms = lazy(() => import("../pages/Boardrooms"));
 const Farm = lazy(() => import("../pages/Farm"));
+const SundaeNodes = lazy(() => import("../pages/SundaeNodes"));
 const Treasury = lazy(() => import("../pages/Treasury"));
 const Unlock = lazy(() => import("../pages/Unlock"))
 
@@ -30,6 +31,12 @@ export const routes = [
     {
         path: '/farm',
         component: Farm,
+        exact: false,
+        role: [0, 1]
+    },
+    {
+        path: '/sundaenodes',
+        component: SundaeNodes,
         exact: false,
         role: [0, 1]
     },

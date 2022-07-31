@@ -1,0 +1,93 @@
+@import '../../../../styles/config';
+
+.block {
+  margin: 0 auto;
+  background-size: 200% 200%;
+  animation: background 3s infinite linear;
+  //min-height: 380px;
+
+  &:hover {
+    animation: background 1s infinite linear;
+  }
+}
+
+@keyframes background {
+  0% {
+    background-position: 0 80%;
+  }
+  50% {
+    background-position: 100% 20%;
+  }
+  100% {
+    background-position: 0 80%;
+  }
+}
+
+.wrapper {
+  @include flex($direction: column);
+  @include size(100%);
+
+  position: relative;
+  padding: 22px 20px;
+}
+
+.top {
+  @include flex(center, center);
+
+  border-bottom: 1px solid #C4C4C4;
+  padding-bottom: 15px;
+}
+
+.center {
+  @include flex(center, center, column);
+
+  padding: 15px 0;
+  flex-grow: 1;
+}
+
+.item {
+  text-align: center;
+  margin-bottom: 45px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.picture {
+  @include size(80px);
+
+  margin-left: -12px;
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    @include size(70px);
+  }
+}
+
+.title {
+  font-size: 22px;
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    font-size: 18px;
+  }
+}
+
+.button {
+  max-width: 160px;
+  white-space: nowrap;
+}
+
+.value {
+  font-size: 26px;
+  font-weight: var(--medium);
+}
+
+.card {
+  margin-top: 25px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #FDAD3E 0%, #FE4F8E 47.4%, #C64FBB 100%);
+  & .progress{
+    font-size: 30px;
+  }
+}

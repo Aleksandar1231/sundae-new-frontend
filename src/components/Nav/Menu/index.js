@@ -1,5 +1,5 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink, Link} from "react-router-dom";
 
 import classes from 'classnames';
 
@@ -45,6 +45,16 @@ const Menu = ({active, setActive}) => {
                     Boardroom
                 </NavLink>
             </li>
+            <li className={styles.item}>
+                 <a
+                    href={"https://sundaefinance.app/#/nodes"}
+                    className={styles.link}
+                    target={"_blank"}
+                    rel={"noreferrer"}
+                 >
+                Nodes
+                </a>
+            </li>
             <li className={classes(styles.item, styles.last)}>
                 <NavLink
                     activeClassName={styles.active}
@@ -55,6 +65,17 @@ const Menu = ({active, setActive}) => {
                     Bonds
                 </NavLink>
             </li>
+            {/* <li className={styles.item}>
+                <NavLink
+                    activeClassName={styles.active}
+                    className={styles.link}
+                    to="https://froyo.farm/#/avax"
+                    onClick={() => setActive(false)}
+                >
+                    Vault
+                </NavLink>
+            </li> */}
+
             <div className={styles.pictures}>
                 <div className={styles.picture}>
                     <img
