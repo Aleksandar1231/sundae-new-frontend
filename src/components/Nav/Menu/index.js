@@ -55,7 +55,7 @@ const Menu = ({active, setActive}) => {
                 Nodes
                 </a>
             </li>
-            <li className={classes(styles.item, styles.last)}>
+            <li className={styles.item}>
                 <NavLink
                     activeClassName={styles.active}
                     className={styles.link}
@@ -64,6 +64,16 @@ const Menu = ({active, setActive}) => {
                 >
                     Bonds
                 </NavLink>
+            </li>
+            <li className={classes(styles.item, styles.last)}>
+                 <a
+                    href={"https://froyo.farm/#/avax"}
+                    className={styles.link}
+                    target={"_blank"}
+                    rel={"noreferrer"}
+                 >
+                Vault
+                </a>
             </li>
             {/* <li className={styles.item}>
                 <NavLink
