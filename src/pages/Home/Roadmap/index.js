@@ -27,7 +27,7 @@ const Roadmap = () => {
                                 <ul className={classes(styles.list, styles.primary, styles[mode])}>
                                     <li className={styles.item}>Start initial announcement on Twitter</li>
                                     <li className={styles.item}>Create Discord and grow organically</li>
-                                    <li className={styles.item}>Develope prototype website</li>
+                                    <li className={styles.item}>Develop prototype website</li>
                                     <li className={styles.item}>Secure Domain icecreamfinance.app</li>
                                     <li className={styles.item}>Secure KYC from Assured DeFi</li>
                                 </ul>

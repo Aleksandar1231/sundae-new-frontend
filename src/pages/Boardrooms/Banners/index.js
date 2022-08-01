@@ -48,7 +48,7 @@ const Banners = () => {
                             <Card text={"Daily APR"}>{`${(masonryAPR / 365).toFixed(2)}%`}</Card>
                         </div>
                         <div className={classes(styles.card, styles.bottom)}>
-                            <Card text={"CSHARE Staked"}>{getDisplayBalance(totalStaked)}</Card>
+                            <Card text={"STRAW Staked"}>{getDisplayBalance(totalStaked)}</Card>
                         </div>
                     </div>
                 </div>

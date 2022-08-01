@@ -21,12 +21,12 @@ const Boardrooms = () => {
         },
         {
             title: "Deposit Tokens",
-            text: "Deposit the tokens into the boardroom. There will be a 36 hour lock-up period prior to being able withdraw the deposited share token.",
+            text: "Deposit the tokens into the Boardroom. There will be a 36 hour lock-up period prior to being able withdraw to the deposited share token.",
             icon: 'deposit'
         },
         {
             title: "Claim Rewards",
-            text: "Collect the emissions in the form of the peg-token. There will be a 18 hour lockup period after redeeming rewards.",
+            text: "Collect the emissions in the form of the peg-token. There will be an 18 hour lockup period after redeeming rewards.",
             icon: 'claim'
         }
     ]
@@ -38,8 +38,8 @@ const Boardrooms = () => {
                     <ReactTitle title={'Sundae | Boardroom'}/>
                     <Description
                         title={'Boardroom'}
-                        text={'Earn the protocols peg-token by single staking the protocols share-token. You do not have to create any liquidity pairs to stake in the boardroom.' +
-                            ' Annual percentage yield is dependent on the total value locked and protocol expansion rate.'}
+                        text={"Earn the protocol's peg-token by single staking the protocol's share-token. You do not have to create any liquidity pairs to stake in the boardroom." +
+                            ' Annual percentage rate is dependent on the total value locked and protocol expansion rate.'}
                         page={'boardrooms'}
                     />
                     <Banners/>

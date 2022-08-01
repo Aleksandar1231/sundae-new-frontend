@@ -37,7 +37,7 @@ const Innovative = () => {
                                 standard for new protocols.</p>
                             <p className={styles.text}>Our team consists of passionate investors right down to the core
                                 with a strong understanding of the requirements to satisfy the decentralization of
-                                financial independance.</p>
+                                financial independence.</p>
                         </div>
                     </div>
                 </div>

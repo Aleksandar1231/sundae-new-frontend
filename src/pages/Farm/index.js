@@ -42,14 +42,14 @@ const Farm = () => {
                         <ReactTitle title={'Sundae | Farm'}/>
                         <Description
                             title={'Farms'}
-                            text={'Earn the protocols share-token by staking various liquidity pairs. Each pool has a different annual ' +
+                            text={"Earn the protocol's share-token by staking various liquidity pairs. Each pool has a different annual " +
                                 'percentage revenue dependent on the pool\'s allocations, total value locked and protocol expansion rate.'}
                             page={'farm'}
                         />
                         <Tokens/>
                         <Numbers
                             title={'How It Works'}
-                            description={'Provided liquidity in the Farms is contributed to the general economy of the protocol. The farms will emit rewards in the form of the share-token. The share token has a limited supply and yielding utility in the boardroom, which makes it very valuable.'}
+                            description={'Liquidity provided in the Farms contributes to the general economy of the protocol. The farms will emit rewards in the form of the share-token. The share token has a limited supply and yielding utility in the boardroom, which makes it very valuable.'}
                             info={numbers}
                             page={'farm'}
                         />
