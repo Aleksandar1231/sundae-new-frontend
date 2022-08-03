@@ -47,7 +47,7 @@ const Menu = ({active, setActive}) => {
             </li>
             <li className={styles.item}>
                  <a
-                    href={"https://sundaefinance.app/#/nodes"}
+                    href={"https://legacy.sundaefinance.app/#/nodes"}
                     className={styles.link}
                     target={"_blank"}
                     rel={"noreferrer"}
@@ -64,6 +64,16 @@ const Menu = ({active, setActive}) => {
                 >
                     Bonds
                 </NavLink>
+            </li>
+            <li className={styles.item}>
+                 <a
+                    href={"https://legacy.sundaefinance.app/#/lastmanstanding"}
+                    className={styles.link}
+                    target={"_blank"}
+                    rel={"noreferrer"}
+                 >
+                LMS
+                </a>
             </li>
             <li className={classes(styles.item, styles.last)}>
                  <a
