@@ -32,7 +32,7 @@ const Card = ({bank, src, title}) => {
     const tombStats = useTombStats();
     const tShareStats = useShareStats();
 
-    const tokenStats = bank.earnTokenName === 'CSHARE' ? tShareStats : tombStats;
+    const tokenStats = bank.earnTokenName === 'STRAW' ? tShareStats : tombStats;
     const tokenPriceInDollars = useMemo(
         () => (tokenStats ? Number(tokenStats.priceInDollars).toFixed(2) : null),
         [tokenStats],
