@@ -34,7 +34,7 @@ const Bonds = () => {
         <>
             {!!account ? (
                 <main className={'inner'}>
-                    <ReactTitle title={'IceCream | Bonds'}/>
+                    <ReactTitle title={'Sundae | Bonds'}/>
                     <Description
                         title={'Buy & Redeem Bonds'}
                         text={'Purchase bonds utilizing the peg-token when the protocol is below peg. You may redeem bonds for a premium dependent on the time weighted average price once the protocol is above the pegged value of the target-token.'}
