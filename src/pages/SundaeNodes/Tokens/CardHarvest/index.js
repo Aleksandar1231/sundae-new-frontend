@@ -39,12 +39,13 @@ const CardHarvest = ({bank}) => {
                     <div className={styles.picture}>
                         <img src={`/img/${bank.earnTokenName}.png`} alt={''} loading={'lazy'}/>
                     </div>
-                    <h6 className={styles.title}>{'FUDGE Earned'}</h6>
                 </div>
                 <div className={styles.center}>
                     <div className={styles.item}>
+                    
                         <h5 className={styles.value}>{getDisplayBalance(earnings)}</h5>
                         <p className={styles.label}>{`≈ $${earnedInDollars}`}</p>
+                        <h6 className={styles.title}>{'FUDGE Earned'}</h6>
                     </div>
                     <div className={styles.item}>
                         <div className={styles.button}>
@@ -60,7 +61,7 @@ const CardHarvest = ({bank}) => {
                         <div className={styles.button}>
                             <Button
                                 type={'button'}
-                                placeholder={'Compound ' + (Number(earnings)/Number(nodePrice)) + ' Nodes'}
+                                placeholder={'Compound ' + (Number(earnings)/Number(nodePrice)).toFixed(0) + ' Nodes'}
                                 classname={Number(earnings) < Number(nodePrice) ? 'primary': 'primary'}
                                 disabled={Number(earnings) < Number(nodePrice)}
                                 action={onCompound}

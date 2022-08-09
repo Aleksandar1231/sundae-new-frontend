@@ -51,7 +51,7 @@ const Banners = () => {
                             </Card>
                         </div>
                         <div className={classes(styles.card, styles.bottom)}>
-                            <Card text={"Daily | $"}>{(Number(daily) / 1e18).toFixed(2)} | $ {((Number(daily) / 1e18) * (tokenPriceInDollars)).toFixed(2)}</Card>
+                            <Card text={"Daily Earnings"}> $ {((Number(daily) / 1e18) * (tokenPriceInDollars)).toFixed(2)}</Card>
                         </div>
                         <div className={classes(styles.card, styles.top)}>
                             <Card text={"Amount Claimed"}>{(Number(userDetails.total_claims) / 1e18).toFixed(2)}</Card>
@@ -60,7 +60,7 @@ const Banners = () => {
                             <Card text={"Max Possible Pay"}>{Number(max) / 1e18}</Card>
                         </div>
                         <div className={classes(styles.card, styles.top)}>
-                            <Card text={"Daily APR"}>{bank?.closedForStaking ? '0.00' : statsOnPool?.yearlyAPR}% | {bank?.closedForStaking ? '0.00' : statsOnPool?.dailyAPR}%</Card>
+                            <Card text={"Daily APR"}> {bank?.closedForStaking ? '0.00' : statsOnPool?.dailyAPR}%</Card>
                         </div>
                         <div className={classes(styles.card, styles.bottom)}>
                             <Card text={"Total Nodes | TVL"}>{Number(total[0])} | ${statsOnPool?.TVL ? (Number((Number(statsOnPool?.TVL).toFixed(0)))).toLocaleString('en-US') : '-.--'}</Card>

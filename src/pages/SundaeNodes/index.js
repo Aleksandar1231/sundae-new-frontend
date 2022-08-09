@@ -16,17 +16,17 @@ const SundaeNodes = () => {
     const numbers = [
         {
             title: "Purchase or Claim",
-            text: "Either purchase the share-token from traderjoe or claim rewards from the Farms.",
+            text: "Either purchase the FUDGE from TraderJoe or claim rewards from the Boardroom.",
             icon: 'purchase'
         },
         {
-            title: "Deposit Tokens",
-            text: "Deposit the tokens into the Boardroom. There will be a 36 hour lock-up period prior to being able withdraw to the deposited share token.",
+            title: "Purchase Node",
+            text: "Purchase Nodes using the required fixed token cost of 50 FUDGE. Several Nodes can be purchased at once.",
             icon: 'deposit'
         },
         {
-            title: "Claim Rewards",
-            text: "Collect the emissions in the form of the peg-token. There will be an 18 hour lockup period after redeeming rewards.",
+            title: "Compound or Claim",
+            text: "You can claim your rewards to take profit or compound into more Nodes once you have earned enough to cover the cost.",
             icon: 'claim'
         }
     ]
@@ -38,15 +38,14 @@ const SundaeNodes = () => {
                     <ReactTitle title={'Sundae | Nodes'} />
                     <Description
                         title={'Nodes'}
-                        text={"Earn the protocol's peg-token by single staking the protocol's share-token. You do not have to create any liquidity pairs to stake in the boardroom." +
-                            ' Annual percentage rate is dependent on the total value locked and protocol expansion rate.'}
+                        text={"Purchase Nodes to participate in the locked staking pool. Each Node has a fixed token cost and delivers a relatively stable return on investment. The addition of Nodes promotes further utility for the peg token while also increasing the ability to generate further revenue from the protocol."}
                         page={'sundaenodes'}
                     />
                     <Banners />
                     <Tokens />
                     <Numbers
                         title={'How It Works'}
-                        description={'The boardroom utilizes the share-token as a single stake in the protocol to emit the governance (peg) token at the scheduled expansion rate that is dependent on the circulating supply.'}
+                        description={'Nodes utilize the selected token to deliver a form of locked staking in the protocol. Rewards will be emitted in the same token required to purchase the Nodes.'}
                         info={numbers}
                         page={'sundaenodes'}
                     />

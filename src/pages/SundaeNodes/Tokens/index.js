@@ -55,7 +55,7 @@ const Tokens = () => {
                     <div className={classes("row", styles.row)}>
                         <div className={classes("col", "col-12", "col-padding-vertical", styles.col)}>
                             <div className={styles.info}>
-                                <Info text={'Please be aware of the deposit and withdraw cooldowns!'} />
+                                <Info text={'Please be aware that we cannot guarantee a fix percentage everyday!'} />
                             </div>
                         </div>
                         <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical", styles.col)}>
