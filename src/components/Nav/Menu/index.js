@@ -1,11 +1,11 @@
 import React from "react";
-import {NavLink, Link} from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 import classes from 'classnames';
 
 import styles from './index.module.scss';
 
-const Menu = ({active, setActive}) => {
+const Menu = ({ active, setActive }) => {
 
     return (
         <ul
@@ -46,14 +46,14 @@ const Menu = ({active, setActive}) => {
                 </NavLink>
             </li>
             <li className={styles.item}>
-                 <a
-                    href={"https://legacy.sundaefinance.app/#/nodes"}
+                <NavLink
+                    activeClassName={styles.active}
                     className={styles.link}
-                    target={"_blank"}
-                    rel={"noreferrer"}
-                 >
-                Nodes
-                </a>
+                    to="/nodes/FudgeNode"
+                    onClick={() => setActive(false)}
+                >
+                    Nodes
+                </NavLink>
             </li>
             <li className={styles.item}>
                 <NavLink
@@ -66,23 +66,23 @@ const Menu = ({active, setActive}) => {
                 </NavLink>
             </li>
             <li className={styles.item}>
-                 <a
+                <a
                     href={"https://legacy.sundaefinance.app/#/lastmanstanding"}
                     className={styles.link}
                     target={"_blank"}
                     rel={"noreferrer"}
-                 >
-                LMS
+                >
+                    LMS
                 </a>
             </li>
             <li className={classes(styles.item, styles.last)}>
-                 <a
+                <a
                     href={"https://froyo.farm/#/avax"}
                     className={styles.link}
                     target={"_blank"}
                     rel={"noreferrer"}
-                 >
-                Vault
+                >
+                    Vault
                 </a>
             </li>
             {/* <li className={styles.item}>

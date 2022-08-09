@@ -25,8 +25,9 @@ import CardStake from "./CardStake";
 import useBank from '../../../hooks/useBank';
 
 const Tokens = () => {
-    const { bankId } = useParams();
-    const bank = useBank(bankId);
+    // const { bankId } = useParams();
+    // console.log('bankID' + bankId)
+    const bank = useBank('FudgeNode');
     const {onRedeem} = useRedeemOnMasonry();
     const tombStats = useTombStats();
     const {onReward} = useHarvestFromMasonry();
@@ -62,14 +63,14 @@ const Tokens = () => {
                             {/*    <Tooltip*/}
                             {/*        text={'Provided liquidity in the Farms is contributed to the general economy of the protocol. The farms will emit rewards in the form of the share-token. The share token has a limited supply and yielding utility in the boardroom, which makes it very valuable.'}/>*/}
                             {/*</div>*/}
-                            <CardHarvest />
+                            <CardHarvest bank={bank} />
                         </div>
                         <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical", styles.col)}>
                             {/*<div className={styles.tooltip}>*/}
                             {/*    <Tooltip*/}
                             {/*        text={'Provided liquidity in the Farms is contributed to the general economy of the protocol. The farms will emit rewards in the form of the share-token. The share token has a limited supply and yielding utility in the boardroom, which makes it very valuable.'}/>*/}
                             {/*</div>*/}
-                            <CardStake />
+                            <CardStake bank={bank} />
                         </div>
                     </div>
                 </div>

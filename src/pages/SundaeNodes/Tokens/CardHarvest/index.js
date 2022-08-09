@@ -11,18 +11,18 @@ import useShareStats from '../../../../hooks/usetShareStats';
 import useNodePrice from '../../../../hooks/useNodePrice';
 
 const CardHarvest = ({bank}) => {
-    const earnings = useEarnings(bank.contract, bank.earnTokenName, bank.poolId);
+    const earnings = useEarnings(bank?.contract, bank?.earnTokenName, bank?.poolId);
     const tombStats = useTombStats();
     const tShareStats = useShareStats();
 
     let tokenStats = 0;
-    if (bank.earnTokenName === 'STRAW') {
+    if (bank?.earnTokenName === 'STRAW') {
       tokenStats = tShareStats;
-    }else if(bank.earnTokenName === 'FUDGE') {
+    }else if(bank?.earnTokenName === 'FUDGE') {
       tokenStats = tombStats;
     }
   
-    const nodePrice = useNodePrice(bank.contract, bank.poolId, bank.sectionInUI);
+    const nodePrice = useNodePrice(bank?.contract, bank?.poolId, bank?.sectionInUI);
     const tokenPriceInDollars = useMemo(
       () => (tokenStats ? Number(tokenStats.priceInDollars).toFixed(2) : null),
       [tokenStats],
@@ -37,7 +37,7 @@ const CardHarvest = ({bank}) => {
             <div className={styles.wrapper}>
                 <div className={styles.top}>
                     <div className={styles.picture}>
-                        <img src={bank.earnTokenName} alt={''} loading={'lazy'}/>
+                        <img src={`/img/${bank.earnTokenName}.png`} alt={''} loading={'lazy'}/>
                     </div>
                     <h6 className={styles.title}>{'FUDGE Earned'}</h6>
                 </div>
@@ -60,7 +60,7 @@ const CardHarvest = ({bank}) => {
                         <div className={styles.button}>
                             <Button
                                 type={'button'}
-                                placeholder={'Compound' + (Number(earnings)/Number(nodePrice))|0 + 'Nodes'}
+                                placeholder={'Compound ' + (Number(earnings)/Number(nodePrice)) + ' Nodes'}
                                 classname={Number(earnings) < Number(nodePrice) ? 'primary': 'primary'}
                                 disabled={Number(earnings) < Number(nodePrice)}
                                 action={onCompound}

@@ -1,5 +1,5 @@
 import React from "react";
-import {ReactTitle} from 'react-meta-tags';
+import { ReactTitle } from 'react-meta-tags';
 
 import Footer from "../../layouts/Footer";
 import JoinUs from "../../Modules/JoinUs";
@@ -8,11 +8,11 @@ import Numbers from "../../Modules/Numbers";
 import Tokens from "./Tokens";
 import Banners from "./Banners";
 import Unlock from "../Unlock";
-import {useWallet} from "use-wallet";
+import { useWallet } from "use-wallet";
 
 
 const SundaeNodes = () => {
-    const {account} = useWallet();
+    const { account } = useWallet();
     const numbers = [
         {
             title: "Purchase or Claim",
@@ -35,15 +35,15 @@ const SundaeNodes = () => {
         <>
             {!!account ? (
                 <main className={'inner'}>
-                    <ReactTitle title={'Sundae | Nodes'}/>
+                    <ReactTitle title={'Sundae | Nodes'} />
                     <Description
                         title={'Nodes'}
                         text={"Earn the protocol's peg-token by single staking the protocol's share-token. You do not have to create any liquidity pairs to stake in the boardroom." +
                             ' Annual percentage rate is dependent on the total value locked and protocol expansion rate.'}
                         page={'sundaenodes'}
                     />
-                    <Banners/>
-                    <Tokens/>
+                    <Banners />
+                    <Tokens />
                     <Numbers
                         title={'How It Works'}
                         description={'The boardroom utilizes the share-token as a single stake in the protocol to emit the governance (peg) token at the scheduled expansion rate that is dependent on the circulating supply.'}
@@ -55,9 +55,9 @@ const SundaeNodes = () => {
                     />
                 </main>
             ) : (
-                <Unlock/>
+                <Unlock />
             )}
-            <Footer alt={true}/>
+            <Footer alt={true} />
         </>
     );
 }

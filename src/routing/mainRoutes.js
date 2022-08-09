@@ -1,5 +1,5 @@
-import React, {lazy} from 'react'
-import {Redirect} from 'react-router-dom'
+import React, { lazy } from 'react'
+import { Redirect } from 'react-router-dom'
 
 const Home = lazy(() => import("../pages/Home"));
 const Bonds = lazy(() => import("../pages/Bonds"));
@@ -35,7 +35,7 @@ export const routes = [
         role: [0, 1]
     },
     {
-        path: '/sundaenodes',
+        path: '/nodes/FudgeNode',
         component: SundaeNodes,
         exact: false,
         role: [0, 1]
@@ -53,11 +53,11 @@ export const routes = [
         role: [0]
     },
     {
-        component: () => <Redirect to="/unlock"/>,
+        component: () => <Redirect to="/unlock" />,
         role: [0]
     },
     {
-        component: () => <Redirect to="/farm"/>,
+        component: () => <Redirect to="/farm" />,
         role: [1]
     }
 ]
