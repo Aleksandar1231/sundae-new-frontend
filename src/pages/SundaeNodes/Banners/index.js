@@ -54,10 +54,10 @@ const Banners = () => {
                             <Card text={"Daily Earnings"}> $ {((Number(daily) / 1e18) * (tokenPriceInDollars)).toFixed(2)}</Card>
                         </div>
                         <div className={classes(styles.card, styles.top)}>
-                            <Card text={"Amount Claimed"}>{(Number(userDetails.total_claims) / 1e18).toFixed(2)}</Card>
+                            <Card text={"Amount Claimed"}>{(Number(userDetails.total_claims) / 1e18).toFixed(0)}</Card>
                         </div>
                         <div className={classes(styles.card, styles.bottom)}>
-                            <Card text={"Max Possible Pay"}>{Number(max) / 1e18}</Card>
+                            <Card text={"Max Possible Pay"}>{(Number(max) / 1e18).toFixed(0)}</Card>
                         </div>
                         <div className={classes(styles.card, styles.top)}>
                             <Card text={"Daily APR"}> {bank?.closedForStaking ? '0.00' : statsOnPool?.dailyAPR}%</Card>
