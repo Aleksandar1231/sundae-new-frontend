@@ -88,6 +88,15 @@ const CardStake = ({ bank }) => {
                             </div>
                          </div>
                         )}
+
+                            <div className={styles.button}>
+                                <Button
+                                    type={'button'}
+                                    placeholder={'Leaderboard'}
+                                    classname={'primary'}
+
+                                />
+                        </div>
                     </div>
                 </div>
             </div>
