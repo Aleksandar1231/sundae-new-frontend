@@ -107,7 +107,7 @@ const Tokens = () => {
                             .map((pot, index) => (
 
                                 < div key={index.toString()}
-                                    className={classes("col", "col-12", "col-md-6", "col-xl-4", "col-padding-vertical", styles.col)}>
+                                    className={classes("col", "col-12", "col-md-8", "col-xl-6", "col-padding-vertical", styles.col)}>
                                     
                                     <Card pot={pot} />
                                 </div>

@@ -1,23 +1,14 @@
 import { BigNumber } from 'ethers';
 import { useEffect, useRef, useState } from 'react';
-import ContainerWithBgImage from './components/ContainerWithBgImage/ContainerWithBgImage';
 import config from '../LastManStanding/config';
 import { parseBigNumber, useWallet, watchTransaction } from './ethereum/ethereum';
 import handleResult from './ethereum/handleresult';
-import Countdown from './Countdown';
-import usdc from '../../assets/img/lms/usdc.svg';
-import usdc_sm from '../../assets/img/lms/usdc_sm.svg';
-import avax from '../../assets/img/lms/avax.svg';
-import avax_sm from '../../assets/img/lms/avax_sm.svg';
-import grape from '../../assets/img/lms/grape.svg';
-import grape_sm from '../../assets/img/lms/grape_sm.svg';
 import fudge from '../../assets/img/fudge.png';
 import straw from '../../assets/img/straw.png';
 import JoinUs from "../../Modules/JoinUs";
 import Description from "../../Modules/Description";
 import Numbers from "../../Modules/Numbers";
 import { ReactTitle } from 'react-meta-tags';
-import EthereumInteraction from './ethereum/EthereumInteraction';
 import {
   buy,
   claim,
@@ -29,18 +20,12 @@ import {
   getTicketSize,
   getWinner,
 } from './ethereum/lms/lms';
-import separateNumberWithCommas from '../../utils/separateNumberWithCommas';
-import Loading from './components/Loading/Loading';
-import { BtnType, DynamicObject, Size, Symbol } from './types';
-import Svg from './components/Svg';
+import {  DynamicObject,  Symbol } from './types';
 import TombFinance from './ethereum/TombFinance';
 import useMediaQuery from '../../hooks/useMediaQuery';
-import { ChainId } from '@traderjoe-xyz/sdk';
 import React from 'react';
-import { Box, Button, CardActions, CardContent, Typography, Grid, Container } from '@material-ui/core';
-import Card from '../../components/Card';
-import Page from '../../components/Page';
 import Tokens from './Tokens';
+import Footer from "../../layouts/Footer";
 
 interface IKoCPage {
   refHeader: any;
@@ -504,398 +489,47 @@ export default function KocPage({ refHeader }: IKoCPage): JSX.Element {
     if (diff) setSortedPots(newSortedPots);
   }, [lastTs, period, sortedPots]);
 
+  const numbers = [
+    {
+        title: "Purchase",
+        text: "Purchase a sufficient amount of the necessary token to participate in the game. Each round the cost to enter will increase.",
+        icon: 'purchase'
+    },
+    {
+        title: "Deposit",
+        text: "Deposit your token into the pot to take over as the new champion. Each time a new champion is the declared the timer will reset.",
+        icon: 'create'
+    },
+    {
+        title: "Claim Reward",
+        text: "Once the countdown has ended the remaning champion will win the content of the pot. Claim your rewards and wear your crown with pride.",
+        icon: 'deposit'
+    }
+]
+
   return (
     <>
       <main className={'inner'}>
-        <ReactTitle title={'Sundae | LMS'} />
+        <ReactTitle title={'Sundae | Last Man Standing'} />
         <Description
           title={'Last Man Standing'}
-          text={"Do you have what it takes to be the champion"}
+          text={"Deposit now to defeat the current champion and take his place. The last one remaining once the countdown is done wins. Do you have what it takes to be the champion."}
           page={'lastmanstanding'}
         />
         <Tokens />
+        <Numbers
+            title={'How It Works'}
+            description={'The pot has a preset timer that counts down to zero. Deposit funds to reset the timer and become the new champion. Once the timer has ended the most recent champion wins the pot.'}
+            info={numbers}
+            page={'farm'}
+            />
         <JoinUs
           isLast={true}
         />
       </main>
+      <Footer alt={true}/>
 
-      {/** 
-              <Grid container spacing={3} alignItems="stretch" style={{ marginTop: '10px' }}>
-                {sortedPots.map((pot, i: number) => {
-                  const symbol: Symbol = pot.symbol;
-                  const isOpen: boolean = openedPots.includes(symbol);
-                  const avaxOrUsdc: boolean = symbol === Symbol.AVAX || symbol === Symbol.USDC;
-                  const notAvaxAndNotUsdc: boolean = symbol !== Symbol.AVAX && symbol !== Symbol.USDC;
-
-                  return (
-                    <>
-                      <Grid
-                        item
-                        xs={12}
-                        md={6}
-                        key={i.toString()}
-                        onMouseEnter={() => setHoveredbigBox(symbol)}
-                        onMouseLeave={() => setHoveredbigBox(undefined)}
-                        ref={(element) => (refsBigBoxes.current[i] = element)}
-                        onClick={
-                          !isOpen && !pot.inactive
-                            ? () =>
-                              setOpenedPots(
-                                isOpen ? openedPots.filter((pot) => pot !== symbol) : openedPots.concat(symbol),
-                              )
-                            : undefined
-                        }
-                      >
-                        <Card>
-                          <CardContent style={{ backgroundColor: 'white', justifyContent: 'center' }}>
-                            <Grid
-                              style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                marginTop: '30px',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                              }}
-                            >
-                              <Grid>
-                                <img
-                                  src={pot.icon}
-                                  alt=""
-                                  width={pot.iconWidth}
-                                  height={pot.iconHeight}
-                                  className={pot.iconClassName || ''}
-                                />
-                              </Grid>
-                              <Grid style={{ margin: '10px' }}>
-                                <Typography style={{ fontWeight: 'bold' }}>{symbol}</Typography>
-                              </Grid>
-                              <Grid
-                                style={{
-                                  display: 'flex',
-                                  flexDirection: 'column',
-                                  justifyContent: 'center',
-                                  alignItems: 'center',
-                                  alignContent: 'center',
-                                }}
-                              >
-                                <Typography align="center">
-                                  If you survive for {period?.[symbol]?.toNumber() / 3600 || 0} hours in the Tournament,
-                                  <br />
-                                  <span className="font-bold">
-                                    you get the whole pot:{' '}
-                                    {separateNumberWithCommas(parseFloat(potSize?.[symbol]?.toFixed(2) || '0'))}{' '}
-                                    {symbol}
-                                    {pot.symbol === Symbol.AVAX && (
-                                      <>
-                                        {' '}
-                                        ($
-                                        {separateNumberWithCommas(
-                                          parseFloat((potSize?.[symbol] * avaxPriceInDollars)?.toFixed(2)) || '0',
-                                        )}
-                                        )
-                                      </>
-                                    )}
-                                    .
-                                  </span>
-                                  <br />
-                                  {pot.earning && (
-                                    <>
-                                      It only takes 30 minutes of ruling to begin earning!
-                                      <br />
-                                    </>
-                                  )}
-                                  <br />
-                                  <span className="font-bold">Only the most recent</span> Champion can win the pot.
-                                  Another Champion can come by and dominate the fight themselves; if another Champion
-                                  joins the fight, they will knock you off and dominate.
-                                  {pot.symbol === Symbol.AVAX && (
-                                    <>
-                                      <br />
-                                    </>
-                                  )}
-                                  <br />
-                                  <br />
-                                  {winner?.[symbol] !== undefined &&
-                                    !BigNumber.from(winner?.[symbol]).eq(0) &&
-                                    lastTs?.[symbol] !== undefined &&
-                                    period?.[symbol] !== undefined &&
-                                    potSize?.[symbol] !== undefined &&
-                                    (winner?.[symbol] && wallet && winner?.[symbol]?.toLowerCase() === wallet ? (
-                                      Date.now() / 1000 <
-                                        lastTs?.[symbol]?.toNumber() + period?.[symbol]?.toNumber() ? (
-                                        <>
-                                          <span style={{ fontWeight: 'bold' }} className="font-bold">
-                                            You are dominating
-                                          </span>{' '}
-                                          the Tournament!
-                                          <br />
-                                          If you survive until the timer runs out,
-                                          <br />
-                                          <span className="font-bold">
-                                            you will receive{' '}
-                                            {separateNumberWithCommas(parseFloat(potSize?.[symbol]?.toFixed(2) || '0'))}{' '}
-                                            {symbol}
-                                            {pot.symbol === Symbol.AVAX && (
-                                              <>
-                                                {' '}
-                                                ($
-                                                {separateNumberWithCommas(
-                                                  parseFloat((potSize?.[symbol] * avaxPriceInDollars)?.toFixed(2)) ||
-                                                  '0',
-                                                )}
-                                                )
-                                              </>
-                                            )}
-                                            .
-                                          </span>
-                                          {pot.earning && (
-                                            <>
-                                              <br /> <br />
-                                              If you were kicked out of the fight right now,
-                                              <br />
-                                              you'd earn{' '}
-                                              <span className="font-bold">
-                                                {separateNumberWithCommas(
-                                                  parseFloat(getBoobyPrice(symbol)?.toFixed(2)) || '0',
-                                                )}{' '}
-                                                {symbol}
-                                                {pot.symbol === Symbol.AVAX && (
-                                                  <>
-                                                    {' '}
-                                                    ($
-                                                    {separateNumberWithCommas(
-                                                      parseFloat(
-                                                        (getBoobyPrice(symbol) * avaxPriceInDollars)?.toFixed(2),
-                                                      ) || '0',
-                                                    )}
-                                                    )
-                                                  </>
-                                                )}
-                                                .
-                                              </span>
-                                            </>
-                                          )}
-                                        </>
-                                      ) : (
-                                        <>
-                                          The fight is over! You have{' '}
-                                          <span style={{ fontWeight: 'bold' }} className="font-bold">
-                                            won!
-                                          </span>
-                                          <br />
-                                          Claim{' '}
-                                          <span className="font-bold">
-                                            your{' '}
-                                            {separateNumberWithCommas(parseFloat(potSize?.[symbol]?.toFixed(2) || '0'))}{' '}
-                                            {symbol}
-                                            {pot.symbol === Symbol.AVAX && (
-                                              <>
-                                                {' '}
-                                                ($
-                                                {separateNumberWithCommas(
-                                                  parseFloat((potSize?.[symbol] * avaxPriceInDollars)?.toFixed(2)) ||
-                                                  '0',
-                                                )}
-                                                )
-                                              </>
-                                            )}
-                                            !
-                                          </span>
-                                        </>
-                                      )
-                                    ) : (
-                                      winner?.[symbol] &&
-                                      (Date.now() / 1000 <
-                                        lastTs?.[symbol]?.toNumber() + period?.[symbol]?.toNumber() ? (
-                                        <>
-                                          The following address{' '}
-                                          <span className="font-bold">
-                                            will win the{' '}
-                                            {separateNumberWithCommas(parseFloat(potSize?.[symbol]?.toFixed(2) || '0'))}{' '}
-                                            {symbol}
-                                            {pot.symbol === Symbol.AVAX && (
-                                              <>
-                                                {' '}
-                                                ($
-                                                {separateNumberWithCommas(
-                                                  parseFloat((potSize?.[symbol] * avaxPriceInDollars)?.toFixed(2)) ||
-                                                  '0',
-                                                )}
-                                                )
-                                              </>
-                                            )}
-                                          </span>
-                                          :
-                                          <br />
-                                          <span className="break-all">
-                                            {winner?.[symbol]?.slice(0, 6)}...{winner?.[symbol]?.slice(-4)}
-                                          </span>
-                                          .
-                                        </>
-                                      ) : (
-                                        <>
-                                          <br />
-                                          The tournament is over.
-                                          <br />
-                                          <span className="break-all">
-                                            {winner?.[symbol]?.slice(0, 6)}...{winner?.[symbol]?.slice(-4)}
-                                          </span>{' '}
-                                          has{' '}
-                                          <span className="font-bold">
-                                            won{' '}
-                                            {separateNumberWithCommas(parseFloat(potSize?.[symbol]?.toFixed(2) || '0'))}{' '}
-                                            {symbol}
-                                            {pot.symbol === Symbol.AVAX && (
-                                              <>
-                                                {' '}
-                                                ($
-                                                {separateNumberWithCommas(
-                                                  parseFloat((potSize?.[symbol] * avaxPriceInDollars)?.toFixed(2)) ||
-                                                  '0',
-                                                )}
-                                                )
-                                              </>
-                                            )}
-                                            !
-                                          </span>
-                                          <br />
-                                        </>
-                                      ))
-                                    ))}
-                                </Typography>
-                              </Grid>
-
-                              <Countdown
-                                period={period?.[symbol]}
-                                start={lastTs?.[symbol]}
-                                text={pot.text}
-                                bg={pot.bg}
-                                bgLight={pot.bgLight}
-                                className={'mb-8'}
-                              />
-
-                              <EthereumInteraction
-                                wallet={wallet}
-                                chain={chain}
-                                loaded={loaded}
-                                connectButton={
-                                  <Button color="primary" variant="contained">
-                                    Connect to Metamask
-                                  </Button>
-                                }
-                                chainSwitchButton={
-                                  <Button color="primary" variant="contained">
-                                    Switch to Avalanche
-                                  </Button>
-                                }
-                              >
-                                {
-                                  symbol !== Symbol.AVAX && !approved?.[symbol] ? (
-                                    <Button
-                                      color="primary"
-                                      variant="contained"
-                                      onClick={async () => await onApprove(symbol)}
-                                      disabled={Object.values(loading).find((loading) => loading)}
-                                    >
-                                      Approve
-                                    </Button>
-                                  ) : !lastTs?.[symbol] ||
-                                    lastTs?.[symbol]?.eq(0) ||
-                                    Date.now() / 1000 < lastTs?.[symbol]?.toNumber() + period?.[symbol]?.toNumber() ? (
-                                    <Button
-                                      color="primary"
-                                      variant="contained"
-                                      disabled={Object.values(loading).find((loading) => loading)}
-                                      onClick={async () => await onBuy(symbol)}
-                                    >
-                                      {!lastTs?.[symbol] || lastTs?.[symbol]?.eq(0)
-                                        ? 'Be the first to join and start'
-                                        : 'Join'}{' '}
-                                      the Tournament for{' '}
-                                      {separateNumberWithCommas(
-                                        parseFloat(
-                                          parseBigNumber(ticketSize?.[symbol], config.tokens[symbol].decimals)?.toFixed(
-                                            2,
-                                          ),
-                                        ),
-                                      )}{' '}
-                                      {symbol}
-                                      {pot.symbol === Symbol.AVAX && (
-                                        <>
-                                          {' '}
-                                          ($
-                                          {separateNumberWithCommas(
-                                            parseFloat(
-                                              (
-                                                parseBigNumber(ticketSize?.[symbol], config.tokens[symbol].decimals) *
-                                                avaxPriceInDollars
-                                              )?.toFixed(2),
-                                            ) || '0',
-                                          )}
-                                          )
-                                        </>
-                                      )}
-                                    </Button>
-                                  ) : winner?.[symbol]?.toLowerCase() !== wallet ||
-                                    BigNumber.from(winner?.[symbol]).eq(0) ? (
-                                    <></>
-                                  ) : isClaimed?.[symbol] ? (
-                                    <p className={`${pot.text} text-16 sm:text-18 font-semibold`}>
-                                      Your reward is claimed.
-                                    </p>
-                                  ) : lastTs?.[symbol]?.toNumber() + claimPeriod?.[symbol]?.toNumber() <
-                                    Date.now() / 1000 ? (
-                                    <p className={`${pot.text} text-16 sm:text-18 font-semibold`}>
-                                      The time for you to claim your reward has expired. You can't claim it anymore.
-                                    </p>
-                                  ) : (
-                                    <Button
-                                      color="primary"
-                                      variant="contained"
-                                      disabled={Object.values(loading).find((loading) => loading)}
-                                      onClick={async () => await onClaim(symbol)}
-                                    >
-                                      You have won! Claim your{' '}
-                                      {separateNumberWithCommas(parseFloat(potSize?.[symbol]?.toFixed(2)))} {symbol}
-                                      {pot.symbol === Symbol.AVAX && (
-                                        <>
-                                          {' '}
-                                          ($
-                                          {separateNumberWithCommas(
-                                            parseFloat((potSize?.[symbol] * avaxPriceInDollars)?.toFixed(2)) || '0',
-                                          )}
-                                          )
-                                        </>
-                                      )}
-                                    </Button>
-                                  )
-                                }
-                              </EthereumInteraction>
-
-                              <Grid>
-                                <p className={`${pot.text} text-16 sm:text-18 font-medium`}>
-                                  {response?.[symbol] ? (
-                                    response[symbol]
-                                  ) : (
-                                    <>
-                                      <br />
-                                    </>
-                                  )}
-                                </p>
-                              </Grid>
-                            </Grid>
-                          </CardContent>
-                        </Card>
-                      </Grid>
-                    </>
-                  );
-                })}
-              </Grid>
-            </div>
-          </div>
-        </div>
-      </ContainerWithBgImage>
-              */}
+    
     </>
   );
 }

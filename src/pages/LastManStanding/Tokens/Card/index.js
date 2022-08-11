@@ -608,7 +608,7 @@ const Card = ({ pot }) => {
                                     ) : (
                                         <p className={styles.value}>
                                             The fight is over! You have{' '}
-                                            <span style={{ fontWeight: 'bold' }} className="font-bold">
+                                            <span style={{ fontWeight: 'bold !important' }} className="font-bold">
                                                 won!
                                             </span>
                                             <br />

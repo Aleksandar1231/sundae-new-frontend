@@ -32,10 +32,11 @@
 }
 
 .top {
-  @include flex($align-items: center);
+  @include flex($direction: column,$align-items: center);
 
   border-bottom: 1px solid #C4C4C4;
   padding-bottom: 15px;
+  justify-content: center;
 }
 
 .center {
@@ -64,15 +65,21 @@
 
 .picture {
   @include size(80px);
-  margin-right: 15px;
-  margin-left: -12px;
 
   @include media-max(map_get($brackpoints, xl) - 1) {
     @include size(70px);
   }
 }
 
-.title,
+.title{
+  font-size: 30px;
+  margin-top: 15px;
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    font-size: 18px;
+  }
+}
+
+
 .percent {
   font-size: 22px;
 
