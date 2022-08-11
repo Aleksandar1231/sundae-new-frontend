@@ -103,10 +103,6 @@ const Tokens = () => {
             <div className={classes("container-fluid", styles.fluid)}>
                 <div className={classes("container", styles.container)}>
                     <div className={classes("row", styles.row)}>
-                        <div className={classes("col", "col-12", "col-padding-vertical", styles.col)}>
-                            <Info
-                                text={'Please review any and all documentation before investing'} />
-                        </div>
                         {sortedPots
                             .map((pot, index) => (
 
