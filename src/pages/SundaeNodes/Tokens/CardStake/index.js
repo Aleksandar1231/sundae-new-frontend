@@ -44,59 +44,68 @@ const CardStake = ({ bank }) => {
                 </div>
                 <div className={styles.center}>
                     <div className={styles.item}>
-                    <h6 className={styles.value}>{getDisplayBalance(nodePrice, bank.depositToken.decimal, 1)}</h6>
+                        <h6 className={styles.value}>{getDisplayBalance(nodePrice, bank.depositToken.decimal, 1)}</h6>
                         <p className={styles.label}>{`≈ $${earnedInDollars}`}</p>
                         <h5 className={styles.title}>{'Node Cost'}</h5>
                     </div>
                     <div>
                         {approveStatus !== ApprovalState.APPROVED ? (
-                            <div className={styles.button}>
-                                <Button
-                                    type={'button'}
-                                    disabled={
-                                        bank.closedForStaking ||
-                                        approveStatus === ApprovalState.PENDING ||
-                                        approveStatus === ApprovalState.UNKNOWN
-
-                                    }
-                                    placeholder={`Approve ${bank.depositTokenName}`}
-                                    classname={
-                                        bank.closedForStaking ||
+                            <div className={styles.item}>
+                                <div className={styles.button}>
+                                    <Button
+                                        type={'button'}
+                                        disabled={
+                                            bank.closedForStaking ||
                                             approveStatus === ApprovalState.PENDING ||
                                             approveStatus === ApprovalState.UNKNOWN
-                                            ? 'primary'
-                                            : 'primary'
+
+                                        }
+                                        placeholder={`Approve ${bank.depositTokenName}`}
+                                        classname={
+                                            bank.closedForStaking ||
+                                                approveStatus === ApprovalState.PENDING ||
+                                                approveStatus === ApprovalState.UNKNOWN
+                                                ? 'primary'
+                                                : 'primary'
 
 
 
-                                    }
-                                    action={approve}
-                                />
+                                        }
+                                        action={approve}
+                                    />
+                                </div>
+                                <div className={styles.button}>
+                                    <Button
+                                        type={'button'}
+                                        placeholder={'Leaderboard'}
+                                        classname={'primary'}
+
+                                    />
+                                </div>
                             </div>
 
                         ) : (
-                         <div className={styles.item}>
-                            <div className={styles.button}>
-                                <Button
-                                    type={'button'}
-                                    placeholder={'Purchase Node'}
-                                    classname={'primary'}
-                                    disabled={bank.closedForStaking}
-                                    action={() => (bank.closedForStaking ? null : setDepositModal(true))}
+                            <div className={styles.item}>
+                                <div className={styles.button}>
+                                    <Button
+                                        type={'button'}
+                                        placeholder={'Purchase Node'}
+                                        classname={'primary'}
+                                        disabled={bank.closedForStaking}
+                                        action={() => (bank.closedForStaking ? null : setDepositModal(true))}
 
-                                />
+                                    />
+                                </div>
+                                <div className={styles.button}>
+                                    <Button
+                                        type={'button'}
+                                        placeholder={'Leaderboard'}
+                                        classname={'primary'}
+
+                                    />
+                                </div>
                             </div>
-                         </div>
                         )}
-
-                            <div className={styles.button}>
-                                <Button
-                                    type={'button'}
-                                    placeholder={'Leaderboard'}
-                                    classname={'primary'}
-
-                                />
-                        </div>
                     </div>
                 </div>
             </div>
