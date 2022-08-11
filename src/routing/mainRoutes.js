@@ -1,5 +1,5 @@
 import React, { lazy } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 const Home = lazy(() => import("../pages/Home"));
 const Bonds = lazy(() => import("../pages/Bonds"));
@@ -7,57 +7,64 @@ const Boardrooms = lazy(() => import("../pages/Boardrooms"));
 const Farm = lazy(() => import("../pages/Farm"));
 const SundaeNodes = lazy(() => import("../pages/SundaeNodes"));
 const Treasury = lazy(() => import("../pages/Treasury"));
+const KoCPage = lazy(() => import("../pages/LastManStanding"));
 const Unlock = lazy(() => import("../pages/Unlock"))
 
 export const routes = [
     {
         path: '/',
-        component: Home,
+        element: <Home />,
         exact: true,
         role: [0, 1]
     },
     {
         path: '/bonds',
-        component: Bonds,
+        element: <Bonds />,
         exact: false,
         role: [0, 1]
     },
     {
         path: '/boardrooms',
-        component: Boardrooms,
+        element: <Boardrooms />,
         exact: false,
         role: [0, 1]
     },
     {
         path: '/farm',
-        component: Farm,
+        element: <Farm />,
         exact: false,
         role: [0, 1]
     },
     {
         path: '/nodes/FudgeNode',
-        component: SundaeNodes,
+        element: <SundaeNodes />,
+        exact: false,
+        role: [0, 1]
+    },
+    {
+        path: '/lastmanstanding',
+        element: <KoCPage />,
         exact: false,
         role: [0, 1]
     },
     {
         path: '/treasury',
-        component: Treasury,
+        element: <Treasury />,
         exact: false,
         role: [0, 1]
     },
     {
         path: '/unlock',
-        component: Unlock,
+        element: <Unlock />,
         exact: false,
         role: [0]
     },
     {
-        component: () => <Redirect to="/unlock" />,
+        component: () => <Navigate replace to="/unlock" />,
         role: [0]
     },
     {
-        component: () => <Redirect to="/farm" />,
+        component: () => <Navigate replace to="/farm" />,
         role: [1]
     }
 ]

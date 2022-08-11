@@ -1,24 +1,24 @@
-import React, {useCallback, useMemo, useState, useEffect} from "react";
+import React, { useCallback, useMemo, useState, useEffect } from "react";
 import classes from "classnames";
 
 import styles from './index.module.scss';
 
 import Card from "./Card";
 import Banner from "./Banner";
-import {getDisplayBalance} from "../../../utils/formatBalance";
+import { getDisplayBalance } from "../../../utils/formatBalance";
 import useCashPriceInLastTWAP from "../../../hooks/useCashPriceInLastTWAP";
 import useBondStats from "../../../hooks/useBondStats";
 import useBondsPurchasable from "../../../hooks/useBondsPurchasable";
 import useTokenBalance from "../../../hooks/useTokenBalance";
 import useTombFinance from "../../../hooks/useTombFinance";
-import {BOND_REDEEM_PRICE, BOND_REDEEM_PRICE_BN} from "../../../tomb-finance/constants";
-import {useTransactionAdder} from "../../../state/transactions/hooks";
-import {useWallet} from "use-wallet";
-import {useRouteMatch} from "react-router-dom";
+import { BOND_REDEEM_PRICE, BOND_REDEEM_PRICE_BN } from "../../../tomb-finance/constants";
+import { useTransactionAdder } from "../../../state/transactions/hooks";
+import { useWallet } from "use-wallet";
+import { useMatch } from "react-router-dom";
 
 const Tokens = () => {
-    const {path} = useRouteMatch();
-    const {account} = useWallet();
+    const { path } = useMatch('/bonds');
+    const { account } = useWallet();
     const tombFinance = useTombFinance();
     const addTransaction = useTransactionAdder();
     const bondStat = useBondStats();
@@ -30,12 +30,12 @@ const Tokens = () => {
 
     useEffect(() => {
         const getTombBalance = async () => {
-          const { Treasury } = tombFinance.contracts
-          const tombBalance = await tombFinance.TOMB.balanceOf(Treasury.address);
-          setTombBalance(getDisplayBalance(tombBalance, 18, 0));
+            const { Treasury } = tombFinance.contracts
+            const tombBalance = await tombFinance.TOMB.balanceOf(Treasury.address);
+            setTombBalance(getDisplayBalance(tombBalance, 18, 0));
         }
         getTombBalance();
-      })
+    })
 
     const handleBuyBonds = useCallback(
         async (amount) => {
@@ -50,7 +50,7 @@ const Tokens = () => {
     const handleRedeemBonds = useCallback(
         async (amount) => {
             const tx = await tombFinance.redeemBonds(amount);
-            addTransaction(tx, {summary: `Redeem ${amount} CARAML`});
+            addTransaction(tx, { summary: `Redeem ${amount} CARAML` });
         },
         [tombFinance, addTransaction],
     );

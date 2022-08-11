@@ -66,14 +66,14 @@ const Menu = ({ active, setActive }) => {
                 </NavLink>
             </li>
             <li className={styles.item}>
-                <a
-                    href={"https://legacy.sundaefinance.app/#/lastmanstanding"}
+                <NavLink
+                    activeClassName={styles.active}
                     className={styles.link}
-                    target={"_blank"}
-                    rel={"noreferrer"}
+                    to="/lastmanstanding"
+                    onClick={() => setActive(false)}
                 >
                     LMS
-                </a>
+                </NavLink>
             </li>
             <li className={classes(styles.item, styles.last)}>
                 <a
