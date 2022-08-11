@@ -45,8 +45,8 @@ const CardStake = ({ bank }) => {
                 <div className={styles.center}>
                     <div className={styles.item}>
                     <h6 className={styles.value}>{getDisplayBalance(nodePrice, bank.depositToken.decimal, 1)}</h6>
-                        <h5 className={styles.title}>{'Node Cost'}</h5>
                         <p className={styles.label}>{`≈ $${earnedInDollars}`}</p>
+                        <h5 className={styles.title}>{'Node Cost'}</h5>
                     </div>
                     <div>
                         {approveStatus !== ApprovalState.APPROVED ? (
@@ -73,7 +73,9 @@ const CardStake = ({ bank }) => {
                                     action={approve}
                                 />
                             </div>
+
                         ) : (
+                         <div className={styles.item}>
                             <div className={styles.button}>
                                 <Button
                                     type={'button'}
@@ -84,6 +86,7 @@ const CardStake = ({ bank }) => {
 
                                 />
                             </div>
+                         </div>
                         )}
                     </div>
                 </div>
