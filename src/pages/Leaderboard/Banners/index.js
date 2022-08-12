@@ -60,10 +60,10 @@ const Banners = () => {
                                 <ProgressCountdown base={moment().toDate()} hideBar={true} deadline={to.toDate()} description="Next Reset" />
                             </Card>
                         </div>
-                        <div className={classes(styles.card, styles.top)}>
+                        <div className={classes(styles.card, styles.bottom)}>
                             <Card text={"Your Points"}> { userEntries && userEntries.length > 0 ? ( <>{userEntries[0].entries}</> ) : '-' }</Card>
                         </div>
-                        <div className={classes(styles.card, styles.bottom)}>
+                        <div className={classes(styles.card, styles.top)}>
                             <Card text={"Current Leader"}>                  
                             { leaderboardData && leaderboardData.length > 0 ? (
                             <>{leaderboardData[0].entries}</>
