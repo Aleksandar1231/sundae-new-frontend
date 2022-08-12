@@ -154,7 +154,7 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
             {Number(estimate.token1)} {tokenName.startsWith(TSHARE_TICKER) ? FTM_TICKER : TSHARE_TICKER}){' '}
           </StyledDescriptionText>}
       </>}
-      <InputLabel style={{ color: '#1d48b6', marginBottom: '1rem', marginTop: '1rem' }} id="label">
+      {/* <InputLabel style={{ color: '#1d48b6', marginBottom: '1rem', marginTop: '1rem' }} id="label">
         Slippage Tolerance
       </InputLabel>
       <Input
@@ -166,7 +166,7 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
         endAdornment={<div style={{ padding: '1px' }}>%</div>}
         fullWidth={false}
         style={{ maxWidth: '3rem', marginLeft: '14px', border: '1px solid black', borderRadius: '10px', padding: '10px' }}
-      />
+      /> */}
       <ModalActions>
         <Button
           color="primary"

@@ -36,7 +36,7 @@ const Tokens = () => {
                             .filter((bank) => bank.sectionInUI === 2)
                             .map((bank, index) => (
                                 <div key={bank.name}
-                                     className={classes("col", "col-12", "col-md-6", "col-xl-4", "col-padding-vertical", styles.col)}>
+                                     className={classes("col", "col-12", "col-md-6", "col-xl-5", "col-padding-vertical", styles.col)}>
                                     <div className={styles.tooltip}>
                                         <Tooltip
                                             text={toltip[index]}

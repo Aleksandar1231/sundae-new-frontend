@@ -120,7 +120,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   FudgeLPTShareRewardPool: {
     name: 'Earn STRAW by Staking FUDGE',
     poolId: 3,
-    sectionInUI: 2,
+    sectionInUI: 12,
     contract: 'FudgeLPTShareRewardPool',
     depositTokenName: 'FUDGE',
     earnTokenName: 'STRAW',

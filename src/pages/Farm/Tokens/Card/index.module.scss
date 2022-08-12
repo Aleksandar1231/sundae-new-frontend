@@ -1,7 +1,7 @@
 @import '../../../../styles/config';
 
 .block {
-  height: 540px;
+  height: 600px;
   background-size: 200% 200%;
   animation: background 3s infinite linear;
 
@@ -108,8 +108,9 @@
   font-size: 14px;
 }
 
+
 .locked {
-  flex-grow: 1;
+  flex-grow: 3;
   font-family: var(--font-family-additional);
 }
 
@@ -156,5 +157,28 @@
   align-items: end;
   justify-content: center;
   width: 50%;
+}
+
+
+
+.bottom2 {
+  @include flex($align-items: space-between);
+  padding: 15px;
+  border-top: 1px solid #C4C4C4;
+}
+
+.button2 {
+  //max-width: 150px;
+  text-align: center;
+
+  & button {
+    width: 100%;
+    display: inline-block;
+  }
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    max-width: 135px;
+
+  }
 }
 

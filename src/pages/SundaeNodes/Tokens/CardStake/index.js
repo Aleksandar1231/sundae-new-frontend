@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import classNames from "classnames";
-
+import {Link} from "react-router-dom";
 import styles from './index.module.scss';
 
 import Button from "../../../../components/Button";
@@ -76,9 +76,11 @@ const CardStake = ({ bank }) => {
                                 </div>
                                 <div className={styles.button}>
                                     <Button
-                                        type={'button'}
                                         placeholder={'Leaderboard'}
                                         classname={'primary'}
+                                        component={Link}
+                                        to={'/leaderboard'}
+                                        
 
                                     />
                                 </div>
@@ -98,9 +100,10 @@ const CardStake = ({ bank }) => {
                                 </div>
                                 <div className={styles.button}>
                                     <Button
-                                        type={'button'}
+                                        type={'link'}
                                         placeholder={'Leaderboard'}
                                         classname={'primary'}
+                                        action={'/leaderboard'}
 
                                     />
                                 </div>

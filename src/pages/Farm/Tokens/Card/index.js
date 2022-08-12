@@ -21,7 +21,10 @@ import FarmDepositModal from "../../../../components/DepositModal";
 import {useDispatch} from "react-redux";
 import {setDepositModalData, setWithdrawModalData} from "../../../../state/appReducer/actions/modalActions";
 import FarmWithDrawModal from "../../../../components/WithDrawModal";
+import useModal from '../../../../hooks/useModal';
 
+import useZap from '../../../../hooks/useZap';
+import ZapModal from '../../../Bank/components/ZapModal';
 
 const Card = ({bank, src, title}) => {
     const [approveStatus, approve] = useApprove(bank.depositToken, bank.address);
@@ -46,12 +49,13 @@ const Card = ({bank, src, title}) => {
         Number(stakedTokenPriceInDollars) * Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal))
     ).toFixed(2);
     const {onStake} = useStake(bank);
+    const {onZap} = useZap(bank);
     const {onWithdraw} = useWithdraw(bank);
     const tokenBalance = useTokenBalance(bank.depositToken);
     const dispatch = useDispatch()
     const [depositModal, setDepositModal] = useState(false)
     const [withdrawModal, setWithdrawModal] = useState(false)
-
+    const [zapModal, setZapModal] = useState(false)
 
 
     return (
@@ -153,6 +157,25 @@ const Card = ({bank, src, title}) => {
                     <p className={styles.locked}>Total Value Locked:</p>
                     <h5 className={styles.total}>${statsOnPool?.TVL}</h5>
                 </div>
+                <div className={styles.bottom2}>
+                         <div className={styles.button2}>
+                            <Button
+                                type={'link'}
+                                placeholder={'Create Liquidity'}
+                                classname={'primary'}
+                                action={bank.buyLink}
+                            />
+                        </div>
+                        <div className={styles.button2}>
+                            <Button
+                                type={'button'}
+                                placeholder={'Zap'}
+                                classname={'primary'}
+                                disabled={bank.closedForStaking}
+                                action={bank.closedForStaking ? null : ()=> setZapModal(true)}
+                            />
+                        </div>
+                </div>
             </div>
             <FarmDepositModal
                 max={tokenBalance}
@@ -177,6 +200,19 @@ const Card = ({bank, src, title}) => {
                 handleClose={() => setWithdrawModal(false)}
                 open={withdrawModal}
             />
+
+              
+            {/* <ZapModal
+                decimals={bank.depositToken.decimal}
+                onConfirm={(zappingToken, tokenName, amount, slippageBp) => {
+                    if (Number(amount) <= 0 || isNaN(Number(amount))) return;
+                        onZap(zappingToken, tokenName, amount, 2);
+                }}
+                LPtokenName={bank.depositTokenName}
+                handleClose={() => setZapModal(false)}
+                open={ZapModal}
+            /> */}
+
         </div>
     );
 }
