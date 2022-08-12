@@ -1,4 +1,4 @@
-import { Box, CardContent, Grid, Container } from '@material-ui/core';
+import { Box, Grid, } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { lotteries, moralisConfiguration } from '../../config';
 import moment from 'moment/moment';
@@ -14,7 +14,7 @@ const NodeLeaderboard = () => {
 
 
   const from = moment('2022-07-31 12:00:00Z');
-  const to = moment('2022-08-12 12:00:00Z');
+  const to = moment('2022-08-14 12:00:00Z');
 
   useEffect(() => {
     fetchLeaderboardData();
