@@ -2,7 +2,7 @@ import React, {useMemo, useState} from "react";
 import classNames from "classnames";
 
 import styles from './index.module.scss';
-
+import { BigNumber } from 'ethers';
 import useStatsForPool from "../../../../hooks/useStatsForPool";
 import {getDisplayBalance} from "../../../../utils/formatBalance";
 import useEarnings from "../../../../hooks/useEarnings";
@@ -49,13 +49,25 @@ const Card = ({bank, src, title}) => {
         Number(stakedTokenPriceInDollars) * Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal))
     ).toFixed(2);
     const {onStake} = useStake(bank);
-    const {onZap} = useZap(bank);
     const {onWithdraw} = useWithdraw(bank);
     const tokenBalance = useTokenBalance(bank.depositToken);
     const dispatch = useDispatch()
     const [depositModal, setDepositModal] = useState(false)
     const [withdrawModal, setWithdrawModal] = useState(false)
-    const [zapModal, setZapModal] = useState(false)
+
+    // Zap stuff
+    const { onZapIn } = useZap(bank);
+    const [onPresentZap, onDissmissZap] = useModal(
+        <ZapModal
+          decimals={bank.depositToken.decimal}
+          onConfirm={(zappingToken, tokenName, amount, slippageBp) => {
+            if (Number(amount) <= 0 || isNaN(Number(amount))) return;
+            onZapIn(zappingToken, tokenName, amount, slippageBp, BigNumber.from(0), onStake);
+            onDissmissZap();
+          }}
+          tokenName={bank.depositTokenName}
+        />,
+      );
 
 
     return (
@@ -172,7 +184,7 @@ const Card = ({bank, src, title}) => {
                                 placeholder={'Zap'}
                                 classname={'primary'}
                                 disabled={bank.closedForStaking}
-                                action={bank.closedForStaking ? null : ()=> setZapModal(true)}
+                                action={() => (bank.closedForStaking ? null : onPresentZap())}
                             />
                         </div>
                 </div>
@@ -200,18 +212,6 @@ const Card = ({bank, src, title}) => {
                 handleClose={() => setWithdrawModal(false)}
                 open={withdrawModal}
             />
-
-              
-            {/* <ZapModal
-                decimals={bank.depositToken.decimal}
-                onConfirm={(zappingToken, tokenName, amount, slippageBp) => {
-                    if (Number(amount) <= 0 || isNaN(Number(amount))) return;
-                        onZap(zappingToken, tokenName, amount, 2);
-                }}
-                LPtokenName={bank.depositTokenName}
-                handleClose={() => setZapModal(false)}
-                open={ZapModal}
-            /> */}
 
         </div>
     );
