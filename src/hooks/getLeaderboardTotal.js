@@ -28,7 +28,7 @@ export const getLeaderboardTotal = async (lotteries, from, to) => {
       combinedEntries[event.objectId].entries = combinedEntries[event.objectId].entries + (event.total * lotteries[i].entries);
     });
   }
-  
+
   return Object.values(combinedEntries).sort((a, b) => {
     if (a.entries > b.entries) {
       return -1;

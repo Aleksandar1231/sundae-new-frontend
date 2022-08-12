@@ -1,10 +1,12 @@
-import { Box, CardContent, Grid, Typography } from '@material-ui/core';
+import { Box, CardContent, Grid, Container } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { lotteries, moralisConfiguration } from '../../config';
 import moment from 'moment/moment';
 import { getLeaderboardTotal } from '../../hooks/getLeaderboardTotal';
 import Card from '../../components/Card';
-
+import classNames from "classnames";
+import classes from "classnames";
+import styles from './index.module.scss';
 
 
 const NodeLeaderboard = () => {
@@ -12,7 +14,7 @@ const NodeLeaderboard = () => {
 
 
   const from = moment('2022-07-31 12:00:00Z');
-  const to = moment('2022-08-07 12:00:00Z');
+  const to = moment('2022-08-12 12:00:00Z');
 
   useEffect(() => {
     fetchLeaderboardData();
@@ -30,40 +32,55 @@ const NodeLeaderboard = () => {
   };
 
   return (
-      <Grid container spacing={3} style={{ marginTop: '50px' }}>
-        {leaderboardData && (
-          <Grid item xs={12} sm={12} md={12}>
-            <Card variant="outlined">
-              <CardContent>
-                <Box style={{ position: 'relative' }}>
-                  <table style={{'width': '100%'}}>
-                    <thead>
-                    <tr>
-                      <th>&nbsp;</th>
-                      <th style={{ textAlign: 'left' }}>Wallet</th>
-                      <th>FUDGE Node Points</th>
-                      <th>LP Node Points</th>
-                      <th>Total Points</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {leaderboardData.map((item, index) => (
-                      <tr key={index}>
-                        <td>{index + 1}.</td>
-                        <td>{'0x...' + item.wallet.slice(-8)}</td>
-                        <td style={{ textAlign: 'center' }}>{item.entries0}</td>
-                        <td style={{ textAlign: 'center' }}>{item.entries1}</td>
-                        <td style={{ textAlign: 'center' }}>{item.entries}</td>
-                      </tr>
-                    ))}
-                    </tbody>
-                  </table>
-                </Box>
-              </CardContent>
-            </Card>
-          </Grid>
-        )}
-      </Grid>
+    <section className={classes("section", styles.section)}>
+      <div className={classes("container-fluid", styles.fluid)}>
+        <div className={classes("container", styles.container)}>
+          <div className={classes("row", styles.row)}>
+            <div
+              className={classes("col", "col-padding-vertical", styles.col)}>
+              <div className={classNames('gradient-background', styles.block)}>
+                {leaderboardData && (
+                  <div className={styles.wrapper}>
+                    <div className={styles.top}>
+                      <div>
+                        <h6 className={styles.title}>Sundae Nodes</h6>
+                      </div>
+                    </div>
+                    <div className={styles.center}>
+                      <div className={styles.item}>
+                        <table style={{ 'width': '100%' }}>
+                          <thead>
+                            <tr>
+                              <th>&nbsp;</th>
+                              <th style={{ textAlign: 'left' }}>Wallet</th>
+                              <th>FUDGE Node Points</th>
+                              <th>LP Node Points</th>
+                              <th>Total Points</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {leaderboardData.map((item, index) => (
+                              <tr key={index}>
+                                <td>{index + 1}.</td>
+                                <td>{'0x...' + item.wallet.slice(-8)}</td>
+                                <td style={{ textAlign: 'center' }}>{item.entries0}</td>
+                                <td style={{ textAlign: 'center' }}>{item.entries1}</td>
+                                <td style={{ textAlign: 'center' }}>{item.entries}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
