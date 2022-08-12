@@ -11,6 +11,7 @@ $outher: 25px;
 }
 
 .card {
+  @include flex($justify-content: center, $wrap: nowrap);
   margin-bottom: 30px;
   padding: 0 10px;
   flex: 1;
