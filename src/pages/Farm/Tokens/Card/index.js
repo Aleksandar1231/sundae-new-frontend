@@ -1,15 +1,15 @@
-import React, {useMemo, useState} from "react";
+import React, { useMemo, useState } from "react";
 import classNames from "classnames";
 
 import styles from './index.module.scss';
 import { BigNumber } from 'ethers';
 import useStatsForPool from "../../../../hooks/useStatsForPool";
-import {getDisplayBalance} from "../../../../utils/formatBalance";
+import { getDisplayBalance } from "../../../../utils/formatBalance";
 import useEarnings from "../../../../hooks/useEarnings";
 import useShareStats from "../../../../hooks/usetShareStats";
 import useTombStats from "../../../../hooks/useTombStats";
 import useHarvest from "../../../../hooks/useHarvest";
-import useApprove, {ApprovalState} from "../../../../hooks/useApprove";
+import useApprove, { ApprovalState } from "../../../../hooks/useApprove";
 import useStakedBalance from "../../../../hooks/useStakedBalance";
 import useStakedTokenPriceInDollars from "../../../../hooks/useStakedTokenPriceInDollars";
 import useTokenBalance from "../../../../hooks/useTokenBalance";
@@ -18,20 +18,20 @@ import useWithdraw from "../../../../hooks/useWithdraw";
 import TokenSymbol from "../../../../components/TokenSymbol";
 import Button from "../../../../components/Button";
 import FarmDepositModal from "../../../../components/DepositModal";
-import {useDispatch} from "react-redux";
-import {setDepositModalData, setWithdrawModalData} from "../../../../state/appReducer/actions/modalActions";
+import { useDispatch } from "react-redux";
+import { setDepositModalData, setWithdrawModalData } from "../../../../state/appReducer/actions/modalActions";
 import FarmWithDrawModal from "../../../../components/WithDrawModal";
 import useModal from '../../../../hooks/useModal';
 
 import useZap from '../../../../hooks/useZap';
 import ZapModal from '../../../Bank/components/ZapModal';
 
-const Card = ({bank, src, title}) => {
+const Card = ({ bank, src, title }) => {
     const [approveStatus, approve] = useApprove(bank.depositToken, bank.address);
     const statsOnPool = useStatsForPool(bank);
 
     const earnings = useEarnings(bank.contract, bank.earnTokenName, bank.poolId);
-    const {onReward} = useHarvest(bank);
+    const { onReward } = useHarvest(bank);
     const tombStats = useTombStats();
     const tShareStats = useShareStats();
 
@@ -48,8 +48,8 @@ const Card = ({bank, src, title}) => {
     const stakedInDollars = (
         Number(stakedTokenPriceInDollars) * Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal))
     ).toFixed(2);
-    const {onStake} = useStake(bank);
-    const {onWithdraw} = useWithdraw(bank);
+    const { onStake } = useStake(bank);
+    const { onWithdraw } = useWithdraw(bank);
     const tokenBalance = useTokenBalance(bank.depositToken);
     const dispatch = useDispatch()
     const [depositModal, setDepositModal] = useState(false)
@@ -59,15 +59,15 @@ const Card = ({bank, src, title}) => {
     const { onZapIn } = useZap(bank);
     const [onPresentZap, onDissmissZap] = useModal(
         <ZapModal
-          decimals={bank.depositToken.decimal}
-          onConfirm={(zappingToken, tokenName, amount, slippageBp) => {
-            if (Number(amount) <= 0 || isNaN(Number(amount))) return;
-            onZapIn(zappingToken, tokenName, amount, slippageBp, BigNumber.from(0), onStake);
-            onDissmissZap();
-          }}
-          tokenName={bank.depositTokenName}
+            decimals={bank.depositToken.decimal}
+            onConfirm={(zappingToken, tokenName, amount, slippageBp) => {
+                if (Number(amount) <= 0 || isNaN(Number(amount))) return;
+                onZapIn(zappingToken, tokenName, amount, slippageBp, BigNumber.from(0), onStake);
+                onDissmissZap();
+            }}
+            tokenName={bank.depositTokenName}
         />,
-      );
+    );
 
 
     return (
@@ -75,7 +75,7 @@ const Card = ({bank, src, title}) => {
             <div className={styles.wrapper}>
                 <div className={styles.top}>
                     <div className={styles.picture}>
-                        <TokenSymbol symbol={bank.depositTokenName}/>
+                        <TokenSymbol symbol={bank.depositTokenName} />
                     </div>
                     <div>
                         <h6 className={styles.title}>{bank.depositTokenName}</h6>
@@ -150,13 +150,13 @@ const Card = ({bank, src, title}) => {
                                     placeholder={'+'}
                                     classname={'primary'}
                                     disabled={bank.closedForStaking}
-                                    action={bank.closedForStaking ? null : ()=> setDepositModal(true)}
+                                    action={bank.closedForStaking ? null : () => setDepositModal(true)}
                                 />
                                 <Button
                                     type={'button'}
                                     placeholder={'-'}
                                     classname={'primary'}
-                                    action={()=> setWithdrawModal(true)}
+                                    action={() => setWithdrawModal(true)}
                                 />
 
                             </div>
@@ -170,23 +170,23 @@ const Card = ({bank, src, title}) => {
                     <h5 className={styles.total}>${statsOnPool?.TVL}</h5>
                 </div>
                 <div className={styles.bottom2}>
-                         <div className={styles.button2}>
-                            <Button
-                                type={'link'}
-                                placeholder={'Create Liquidity'}
-                                classname={'primary'}
-                                action={bank.buyLink}
-                            />
-                        </div>
-                        <div className={styles.button2}>
-                            <Button
-                                type={'button'}
-                                placeholder={'Zap'}
-                                classname={'primary'}
-                                disabled={bank.closedForStaking}
-                                action={() => (bank.closedForStaking ? null : onPresentZap())}
-                            />
-                        </div>
+                    <div className={styles.button2}>
+                        <Button
+                            type={'link'}
+                            placeholder={'Create Liquidity'}
+                            classname={'primary'}
+                            action={bank.buyLink}
+                        />
+                    </div>
+                    <div className={styles.button2}>
+                        <Button
+                            type={'button'}
+                            placeholder={'Zap'}
+                            classname={'primary'}
+                            disabled={bank.closedForStaking}
+                            action={() => (bank.closedForStaking ? null : onPresentZap())}
+                        />
+                    </div>
                 </div>
             </div>
             <FarmDepositModal

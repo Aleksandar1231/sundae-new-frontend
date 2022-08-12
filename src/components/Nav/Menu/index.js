@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 import classes from 'classnames';
 
 import styles from './index.module.scss';
 
 const Menu = ({ active, setActive }) => {
+    const theme = useTheme();
+    const [isVisible, setIsVisible] = useState(false);
+    const toggle = () => { setIsVisible(!isVisible) }
+    const matches = useMediaQuery(theme.breakpoints.down('lg'));
 
     return (
         <ul
@@ -65,36 +71,106 @@ const Menu = ({ active, setActive }) => {
                     Bonds
                 </NavLink>
             </li>
-            <li className={styles.item}>
-                <NavLink
-                    activeclassname={styles.active}
-                    className={styles.link}
-                    to="/lastmanstanding"
-                    onClick={() => setActive(false)}
-                >
-                    LMS
-                </NavLink>
-            </li>
-            <li className={styles.item}>
-                <NavLink
-                    activeclassname={styles.active}
-                    className={styles.link}
-                    to="/leaderboard"
-                    onClick={() => setActive(false)}
-                >
-                    Leaderboard
-                </NavLink>
-            </li>
-            <li className={classes(styles.item, styles.last)}>
-                <a
-                    href={"https://froyo.farm/#/avax"}
-                    className={styles.link}
-                    target={"_blank"}
-                    rel={"noreferrer"}
-                >
-                    Vault
-                </a>
-            </li>
+            {matches ? (
+                <>
+                    <li className={styles.item}>
+                        <NavLink
+                            activeclassname={styles.active}
+                            className={styles.link}
+                            to="/lastmanstanding"
+                            onClick={() => {
+                                setActive(false);
+                                toggle();
+                            }}
+                        >
+                            LMS
+                        </NavLink>
+                    </li>
+                    <li className={styles.item}>
+                        <NavLink
+                            activeclassname={styles.active}
+                            className={styles.link}
+                            to="/leaderboard"
+                            onClick={() => {
+                                setActive(false);
+                                toggle();
+                            }}
+                        >
+                            Leaderboard
+                        </NavLink>
+                    </li>
+                    <li className={classes(styles.item, styles.last)}>
+                        <a
+                            href={"https://froyo.farm/#/avax"}
+                            className={styles.link}
+                            target={"_blank"}
+                            rel={"noreferrer"}
+                        >
+                            Vault
+                        </a>
+                    </li>
+                </>
+            ) :
+                (<li className={styles.item}>
+                    {!isVisible ?
+                        <a className={classes(
+                            styles.link, active && styles.active
+                        )} onClick={toggle}>More</a>
+                        : (
+                            <>
+                                <a className={classes(
+                                    styles.link, active && styles.active
+                                )} onClick={toggle}>More</a>
+
+                                <ul
+                                    className={classes(
+                                        styles.dropdownblock,
+                                        active && styles.active
+                                    )}
+                                >
+                                    <li className={styles.item}>
+                                        <NavLink
+                                            activeclassname={styles.active}
+                                            className={styles.link}
+                                            to="/lastmanstanding"
+                                            onClick={() => {
+                                                setActive(false);
+                                                toggle();
+                                            }}
+                                        >
+                                            LMS
+                                        </NavLink>
+                                    </li>
+                                    <li className={styles.item}>
+                                        <NavLink
+                                            activeclassname={styles.active}
+                                            className={styles.link}
+                                            to="/leaderboard"
+                                            onClick={() => {
+                                                setActive(false);
+                                                toggle();
+                                            }}
+                                        >
+                                            Leaderboard
+                                        </NavLink>
+                                    </li>
+                                    <li className={classes(styles.item, styles.last)}>
+                                        <a
+                                            href={"https://froyo.farm/#/avax"}
+                                            className={styles.link}
+                                            target={"_blank"}
+                                            rel={"noreferrer"}
+                                        >
+                                            Vault
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </>
+                        )}
+                </li>
+                )}
+
             {/* <li className={styles.item}>
                 <NavLink
                     activeClassName={styles.active}

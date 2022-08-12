@@ -99,6 +99,7 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
     if (!isNumeric(e.currentTarget.value)) return;
     setVal(e.currentTarget.value);
     if (showEstimates) {
+      console.log(e.currentTarget.value)
       const estimateZap = await tombFinance.estimateZapIn(zappingToken, tokenName, String(e.currentTarget.value));
       setEstimate({ token0: estimateZap[0].toString(), token1: estimateZap[1].toString() });
     }
@@ -190,13 +191,13 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
 };
 
 const StyledActionSpacer = styled.div`
-  height: ${(props) => props.theme.spacing[4]}px;
-  width: ${(props) => props.theme.spacing[4]}px;
+  height: 20px;
+  width: 20px;
 `;
 
 const StyledDescriptionText = styled.div`
   align-items: center;
-  color: ${(props) => props.theme.color.grey[400]};
+  color: grey;
   display: flex;
   font-size: 14px;
   font-weight: 700;
