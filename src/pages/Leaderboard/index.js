@@ -44,8 +44,8 @@ const Leaderboard = () => {
                             text={"Purchase Nodes to immediately qualify for our weekly competition. Defeat your peers by accumulating points and win prizes every Sunday."}
                             page={'leaderboard'}
                         />
-                        <NodeLeaderboard/>
                         <Banners/>
+                        <NodeLeaderboard/>
                         <Numbers
                             title={'How It Works'}
                             description={'Instantly earn points upon the purchase of a Node and qualify for the weekly contest. Prizes and winners get announced every Sunday at 12PM EST.'}
