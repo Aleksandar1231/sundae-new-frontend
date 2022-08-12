@@ -8,6 +8,7 @@ const Farm = lazy(() => import("../pages/Farm"));
 const SundaeNodes = lazy(() => import("../pages/SundaeNodes"));
 const Treasury = lazy(() => import("../pages/Treasury"));
 const KoCPage = lazy(() => import("../pages/LastManStanding"));
+const Leaderboard = lazy(() => import("../pages/Leaderboard"));
 const Unlock = lazy(() => import("../pages/Unlock"))
 
 export const routes = [
@@ -44,6 +45,12 @@ export const routes = [
     {
         path: '/lastmanstanding',
         element: <KoCPage />,
+        exact: false,
+        role: [0, 1]
+    },
+    {
+        path: '/leaderboard',
+        element: <Leaderboard />,
         exact: false,
         role: [0, 1]
     },

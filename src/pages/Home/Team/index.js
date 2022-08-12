@@ -39,7 +39,7 @@ const Team = () => {
                                 Marketing & Communications
                             </Card>
                         </div>
-                        <div className={classes(styles.card, styles.bottom)}>
+                        {/* <div className={classes(styles.card, styles.bottom)}>
                             <Card
                                 url={'/img/team/user_4.png'}
                                 name={"Momo"}
@@ -54,7 +54,7 @@ const Team = () => {
                                 name={"Tillamook"}
                 
                             />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

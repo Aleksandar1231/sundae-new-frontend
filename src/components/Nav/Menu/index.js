@@ -16,10 +16,10 @@ const Menu = ({ active, setActive }) => {
         >
             <li className={styles.item}>
                 <NavLink
-                    activeClassName={styles.active}
+                    activeclassname={styles.active}
                     className={styles.link}
                     to="/"
-                    exact={true}
+                    exact="true"
                     onClick={() => setActive(false)}
                 >
                     Home
@@ -27,7 +27,7 @@ const Menu = ({ active, setActive }) => {
             </li>
             <li className={styles.item}>
                 <NavLink
-                    activeClassName={styles.active}
+                    activeclassname={styles.active}
                     className={styles.link}
                     to="/farm"
                     onClick={() => setActive(false)}
@@ -37,7 +37,7 @@ const Menu = ({ active, setActive }) => {
             </li>
             <li className={styles.item}>
                 <NavLink
-                    activeClassName={styles.active}
+                    activeclassname={styles.active}
                     className={styles.link}
                     to="/boardrooms"
                     onClick={() => setActive(false)}
@@ -47,7 +47,7 @@ const Menu = ({ active, setActive }) => {
             </li>
             <li className={styles.item}>
                 <NavLink
-                    activeClassName={styles.active}
+                    activeclassname={styles.active}
                     className={styles.link}
                     to="/nodes/FudgeNode"
                     onClick={() => setActive(false)}
@@ -57,7 +57,7 @@ const Menu = ({ active, setActive }) => {
             </li>
             <li className={styles.item}>
                 <NavLink
-                    activeClassName={styles.active}
+                    activeclassname={styles.active}
                     className={styles.link}
                     to="/bonds"
                     onClick={() => setActive(false)}
@@ -67,12 +67,22 @@ const Menu = ({ active, setActive }) => {
             </li>
             <li className={styles.item}>
                 <NavLink
-                    activeClassName={styles.active}
+                    activeclassname={styles.active}
                     className={styles.link}
                     to="/lastmanstanding"
                     onClick={() => setActive(false)}
                 >
                     LMS
+                </NavLink>
+            </li>
+            <li className={styles.item}>
+                <NavLink
+                    activeclassname={styles.active}
+                    className={styles.link}
+                    to="/leaderboard"
+                    onClick={() => setActive(false)}
+                >
+                    Leaderboard
                 </NavLink>
             </li>
             <li className={classes(styles.item, styles.last)}>

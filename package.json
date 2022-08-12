@@ -44,6 +44,8 @@
     "install": "^0.13.0",
     "material-ui-image": "^3.3.2",
     "moment": "^2.29.1",
+    "moralis": "^1.8.0",
+    "moralis-admin-cli": "^2.1.16",
     "numeral": "^2.0.6",
     "react": "^16.13.1",
     "react-circular-progressbar": "^2.0.3",

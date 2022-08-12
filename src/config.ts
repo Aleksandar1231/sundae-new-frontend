@@ -120,7 +120,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   FudgeLPTShareRewardPool: {
     name: 'Earn STRAW by Staking FUDGE',
     poolId: 3,
-    sectionInUI: 12,
+    sectionInUI: 2,
     contract: 'FudgeLPTShareRewardPool',
     depositTokenName: 'FUDGE',
     earnTokenName: 'STRAW',
@@ -129,7 +129,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     buyLink: 'https://app.bogged.finance/avax/swap?tokenIn=0xd586E7F844cEa2F87f50152665BCbc2C279D8d70&tokenOut=0xD9FF12172803c072a36785DeFea1Aa981A6A0C18',
     site: null,
     sort: 11,
-    closedForStaking: true,
+    closedForStaking: false,
   },
   FudgeCreamLPTShareRewardPool: {
     name: 'Earn STRAW by FUDGE-CREAM LP',

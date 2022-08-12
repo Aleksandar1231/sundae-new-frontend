@@ -5,30 +5,30 @@ import Footer from "../../layouts/Footer";
 import JoinUs from "../../Modules/JoinUs";
 import Description from "../../Modules/Description";
 import Numbers from "../../Modules/Numbers";
-import Tokens from "./Tokens";
+import NodeLeaderboard from "../Leaderboard/NodeLeaderboard";
+
 import Unlock from "../Unlock";
 import {useWallet} from "use-wallet";
-import Bank from "../Bank";
-import {Route, useRouteMatch} from "react-router-dom";
+
 
 
 const Leaderboard = () => {
-    const {path} = useRouteMatch();
+    // const {path} = useRouteMatch();
     const {account} = useWallet();
     const numbers = [
         {
             title: "Purchase",
-            text: "Purchase tokens neccessary to construct the desired liquidity pair.",
+            text: "Purchase nodes with the required token to participate in weekly giveaways and contests.",
             icon: 'purchase'
         },
         {
             title: "Create",
-            text: "Create a liquidity pair on Trader-Joe. A liquidity pair is 50% value of each token.",
+            text: "Each node created will reward you with 1 point and earn you a position on the leaderboard.",
             icon: 'create'
         },
         {
-            title: "Deposit",
-            text: "Deposit liquidity pair token into the desired farm on the protocol.",
+            title: "Win",
+            text: "Every Sunday the winner in first place will be rewarded the major prize while a lucky random winner is selected to win a minor prize.",
             icon: 'deposit'
         }
     ]
@@ -36,22 +36,20 @@ const Leaderboard = () => {
     return (
 
         <>
-            <Route exact path={path}>
                 {!!account ? (
                     <main className={'inner'}>
-                        <ReactTitle title={'Sundae | Farm'}/>
+                        <ReactTitle title={'Sundae | Leaderboard'}/>
                         <Description
-                            title={'Farms'}
-                            text={"Earn the protocol's share-token by staking various liquidity pairs. Each pool has a different annual " +
-                                'percentage revenue dependent on the pool\'s allocations, total value locked and protocol expansion rate.'}
-                            page={'farm'}
+                            title={'Leaderboard'}
+                            text={"Purchase Nodes to immediately qualify for our weekly competition. Defeat your peers by accumulating points and win prizes every Sunday."}
+                            page={'leaderboard'}
                         />
-                        <Tokens/>
+                        <NodeLeaderboard/>
                         <Numbers
                             title={'How It Works'}
-                            description={'Liquidity provided in the Farms contributes to the general economy of the protocol. The farms will emit rewards in the form of the share-token. The share token has a limited supply and yielding utility in the boardroom, which makes it very valuable.'}
+                            description={'Instantly earn points upon the purchase of a Node and qualify for the weekly contest. Prizes and winners get announced every Sunday at 12PM EST.'}
                             info={numbers}
-                            page={'farm'}
+                            page={'leaderboard'}
                         />
                         <JoinUs
                             isLast={true}
@@ -60,10 +58,6 @@ const Leaderboard = () => {
                 ) : (
                     <Unlock/>
                 )}
-            </Route>
-            <Route path={`${path}/:bankId`}>
-                <Bank/>
-            </Route>
             <Footer alt={true}/>
         </>
     );
