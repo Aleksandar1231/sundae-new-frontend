@@ -43,7 +43,7 @@ const NodeLeaderboard = () => {
                   <div className={styles.wrapper}>
                     <div className={styles.top}>
                       <div>
-                        <h6 className={styles.title}>Sundae Nodes</h6>
+                        <h6 className={styles.title}>Weekly Contest Stats</h6>
                       </div>
                     </div>
                     <div className={styles.center}>
@@ -73,6 +73,7 @@ const NodeLeaderboard = () => {
 
                       </div>
                     </div>
+                    <div className={styles.bottom}/>
                   </div>
                 )}
               </div>
