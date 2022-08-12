@@ -1,10 +1,10 @@
-import { Box, CardContent, Grid, Typography } from '@material-ui/core';
+import { Box, Grid, } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { lotteries, moralisConfiguration } from '../../config';
 import moment from 'moment/moment';
 import { getLeaderboardTotal } from '../../hooks/getLeaderboardTotal';
 import Card from '../../components/Card';
-
+import CardContent from '../../components/CardContent';
 
 
 const NodeLeaderboard = () => {
@@ -12,7 +12,7 @@ const NodeLeaderboard = () => {
 
 
   const from = moment('2022-07-31 12:00:00Z');
-  const to = moment('2022-08-07 12:00:00Z');
+  const to = moment('2022-08-14 12:00:00Z');
 
   useEffect(() => {
     fetchLeaderboardData();

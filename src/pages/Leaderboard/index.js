@@ -6,7 +6,7 @@ import JoinUs from "../../Modules/JoinUs";
 import Description from "../../Modules/Description";
 import Numbers from "../../Modules/Numbers";
 import NodeLeaderboard from "../Leaderboard/NodeLeaderboard";
-
+import Banners from "../Leaderboard/Banners";
 import Unlock from "../Unlock";
 import {useWallet} from "use-wallet";
 
@@ -45,6 +45,7 @@ const Leaderboard = () => {
                             page={'leaderboard'}
                         />
                         <NodeLeaderboard/>
+                        <Banners/>
                         <Numbers
                             title={'How It Works'}
                             description={'Instantly earn points upon the purchase of a Node and qualify for the weekly contest. Prizes and winners get announced every Sunday at 12PM EST.'}
