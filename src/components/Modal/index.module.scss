@@ -1,9 +1,10 @@
-@import '../../../../styles/config';
+@import '../../styles/config';
 
 .block {
   height: 600px;
   background-size: 200% 200%;
   animation: background 3s infinite linear;
+  position: relative;
 
   &:hover {
     animation: background 1s infinite linear;
