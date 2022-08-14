@@ -169,25 +169,25 @@ const Card = ({ bank, src, title }) => {
                     <p className={styles.locked}>Total Value Locked:</p>
                     <h5 className={styles.total}>${statsOnPool?.TVL}</h5>
                 </div>
-                <div className={styles.bottom2}>
-                    <div className={styles.button2}>
-                        <Button
-                            type={'link'}
-                            placeholder={'Create Liquidity'}
-                            classname={'primary'}
-                            action={bank.buyLink}
-                        />
-                    </div>
-                    <div className={styles.button2}>
-                        <Button
-                            type={'button'}
-                            placeholder={'Zap'}
-                            classname={'primary'}
-                            disabled={bank.closedForStaking}
-                            action={() => (bank.closedForStaking ? null : onPresentZap())}
-                        />
-                    </div>
-                </div>
+                {/* <div className={styles.bottom2}>
+                         <div className={styles.button2}>
+                            <Button
+                                type={'link'}
+                                placeholder={'Create Liquidity'}
+                                classname={'primary'}
+                                action={bank.buyLink}
+                            />
+                        </div>
+                        <div className={styles.button2}>
+                            <Button
+                                type={'button'}
+                                placeholder={'Zap'}
+                                classname={'primary'}
+                                disabled={bank.closedForStaking}
+                                action={() => (bank.closedForStaking ? null : onPresentZap())}
+                            />
+                        </div>
+                </div> */}
             </div>
             <FarmDepositModal
                 max={tokenBalance}
