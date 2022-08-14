@@ -13,21 +13,18 @@ export interface ModalProps {
 
 const Modal: React.FC<{ children: React.ReactNode | React.ReactNode[] }> = ({ children }) => {
     return (
-
-        <div className={classNames('gradient-background', styles.block)}>
-            <div className={styles.wrapper}>
-                {children}
-            </div>
-
-        </div>
-
-
+        <Container size="sm">
+            <StyledModal>
+                <div className={styles.wrapper}>
+                    {children}
+                </div>
+            </StyledModal>
+        </Container>
     );
 };
 
 const StyledModal = styled.div`
   border-radius: 12px;
-  position: relative;
 `;
 
 export default Modal;

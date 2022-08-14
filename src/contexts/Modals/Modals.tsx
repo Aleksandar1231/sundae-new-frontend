@@ -9,8 +9,8 @@ interface ModalsContext {
 }
 
 export const Context = createContext<ModalsContext>({
-  onPresent: () => {},
-  onDismiss: () => {},
+  onPresent: () => { },
+  onDismiss: () => { },
 });
 
 const Modals: React.FC<{ children: React.ReactNode | React.ReactNode[] }> = ({ children }) => {
@@ -30,6 +30,7 @@ const Modals: React.FC<{ children: React.ReactNode | React.ReactNode[] }> = ({ c
     setIsOpen(false);
   }, [setContent, setIsOpen]);
 
+  console.log(content)
   return (
     <Context.Provider
       value={{
@@ -57,15 +58,9 @@ const StyledModalWrapper = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
 `;
 
 const StyledModalBackdrop = styled.div`
-  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;

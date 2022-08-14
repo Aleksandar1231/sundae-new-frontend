@@ -7,7 +7,8 @@ import ModalActions from '../../../components/ModalActions';
 import ModalTitle from '../../../components/ModalTitle';
 import TokenInput from '../../../components/TokenInput';
 import styled from 'styled-components';
-
+import classes from "classnames";
+import styles from './index.module.scss';
 import { getDisplayBalance } from '../../../utils/formatBalance';
 import Label from '../../../components/Label';
 import useLpStats from '../../../hooks/useLpStats';
@@ -113,49 +114,67 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
     }
   };
 
-  return (
-    <Modal>
-      <ModalTitle text={`Zap in ${tokenName}`} />
+  const handleClick = (e) => {
+    const action = e.target.getAttribute('data-close')
 
-      <StyledActionSpacer />
-      <InputLabel style={{ color: '#000', marginBottom: '1rem' }} id="label">
-        Select Token
-      </InputLabel>
-      <br />
-      <Select onChange={handleChangeAsset} style={{ border: '1px solid black', borderRadius: '10px', background: 'rgb(8, 9, 13, 1, 0.9)', padding: '10px' }} labelId="label" id="select" value={zappingToken}>
-        <StyledMenuItem value={FTM_TICKER}>DAI</StyledMenuItem>
-        {/* <StyledMenuItem value={AVAX_TICKER}>AVAX</StyledMenuItem> */}
-        <StyledMenuItem value={TSHARE_TICKER}>STRAW</StyledMenuItem>
-        <StyledMenuItem value={TOMB_TICKER}>FUDGE</StyledMenuItem>
-      </Select>
-      <TokenInput
-        onSelectMax={handleSelectMax}
-        onChange={handleChange}
-        value={val}
-        max={zappingTokenBalance}
-        symbol={zappingToken}
-      />
-      <br />
-      {showEstimates && <><Label variant="primary" text="Zap Estimations" />
-        <br />
-        <StyledDescriptionText>
-          {' '}
-          {tokenName}: {Number(estimate.token0) / Number(ftmAmountPerLP)}
-        </StyledDescriptionText>
-        {tokenName.startsWith(TOMB_TICKER) ?
-          <StyledDescriptionText>
-            {' '}
-            ({Number(estimate.token0)} {tokenName.startsWith(TOMB_TICKER) ? FTM_TICKER : TOMB_TICKER} /{' '}
-            {Number(estimate.token1)} {tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : FTM_TICKER}){' '}
-          </StyledDescriptionText>
-          :
-          <StyledDescriptionText>
-            {' '}
-            ({Number(estimate.token0)} {tokenName.startsWith(TSHARE_TICKER) ? TSHARE_TICKER : FTM_TICKER} /{' '}
-            {Number(estimate.token1)} {tokenName.startsWith(TSHARE_TICKER) ? FTM_TICKER : TSHARE_TICKER}){' '}
-          </StyledDescriptionText>}
-      </>}
-      {/* <InputLabel style={{ color: '#1d48b6', marginBottom: '1rem', marginTop: '1rem' }} id="label">
+    if (action) {
+      onDismiss()
+    }
+  }
+
+  return (
+    <div
+      className={classes(styles.block && styles.active)}
+      data-close={true}
+      onClick={(event) => {
+        handleClick(event)
+      }}
+    >
+      <div className={classes('gradient-background', styles.content)}>
+        <h5 className={styles.title}>{`Zap in ${tokenName}`}</h5>
+
+        <div className={classes(styles.content)}>
+
+
+          <StyledActionSpacer />
+          <InputLabel style={{ color: '#000', marginBottom: '1rem' }} id="label">
+            Select Token
+          </InputLabel>
+          <br />
+          <Select onChange={handleChangeAsset} style={{ border: '1px solid black', borderRadius: '10px', background: 'rgb(8, 9, 13, 1, 0.9)', padding: '10px' }} labelId="label" id="select" value={zappingToken}>
+            <StyledMenuItem value={FTM_TICKER}>DAI</StyledMenuItem>
+            {/* <StyledMenuItem value={AVAX_TICKER}>AVAX</StyledMenuItem> */}
+            <StyledMenuItem value={TSHARE_TICKER}>STRAW</StyledMenuItem>
+            <StyledMenuItem value={TOMB_TICKER}>FUDGE</StyledMenuItem>
+          </Select>
+          <TokenInput
+            onSelectMax={handleSelectMax}
+            onChange={handleChange}
+            value={val}
+            max={zappingTokenBalance}
+            symbol={zappingToken}
+          />
+          <br />
+          {showEstimates && <><Label variant="primary" text="Zap Estimations" />
+            <br />
+            <StyledDescriptionText>
+              {' '}
+              {tokenName}: {Number(estimate.token0) / Number(ftmAmountPerLP)}
+            </StyledDescriptionText>
+            {tokenName.startsWith(TOMB_TICKER) ?
+              <StyledDescriptionText>
+                {' '}
+                ({Number(estimate.token0)} {tokenName.startsWith(TOMB_TICKER) ? FTM_TICKER : TOMB_TICKER} /{' '}
+                {Number(estimate.token1)} {tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : FTM_TICKER}){' '}
+              </StyledDescriptionText>
+              :
+              <StyledDescriptionText>
+                {' '}
+                ({Number(estimate.token0)} {tokenName.startsWith(TSHARE_TICKER) ? TSHARE_TICKER : FTM_TICKER} /{' '}
+                {Number(estimate.token1)} {tokenName.startsWith(TSHARE_TICKER) ? FTM_TICKER : TSHARE_TICKER}){' '}
+              </StyledDescriptionText>}
+          </>}
+          {/* <InputLabel style={{ color: '#1d48b6', marginBottom: '1rem', marginTop: '1rem' }} id="label">
         Slippage Tolerance
       </InputLabel>
       <Input
@@ -168,25 +187,27 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
         fullWidth={false}
         style={{ maxWidth: '3rem', marginLeft: '14px', border: '1px solid black', borderRadius: '10px', padding: '10px' }}
       /> */}
-      <ModalActions>
-        <Button
-          color="primary"
-          variant="contained"
-          onClick={() =>
-            approveZapperStatus !== ApprovalState.APPROVED
-              ? approveZapper()
-              : onConfirm(zappingToken, tokenName, val, String(+slippage * 100))
-          }
-        >
-          {approveZapperStatus !== ApprovalState.APPROVED ? 'Approve' : "Zap"}
-        </Button>
-      </ModalActions>
+          <ModalActions>
+            <Button
+              color="primary"
+              variant="contained"
+              onClick={() =>
+                approveZapperStatus !== ApprovalState.APPROVED
+                  ? approveZapper()
+                  : onConfirm(zappingToken, tokenName, val, String(+slippage * 100))
+              }
+            >
+              {approveZapperStatus !== ApprovalState.APPROVED ? 'Approve' : "Zap"}
+            </Button>
+          </ModalActions>
 
-      {/* <StyledActionSpacer />
+          {/* <StyledActionSpacer />
       <Alert variant="outlined" severity="info">
         New feature. Use at your own risk!
       </Alert> */}
-    </Modal>
+        </div>
+      </div>
+    </div>
   );
 };
 
