@@ -128,7 +128,7 @@ const Menu = ({ active, setActive }) => {
                                         active && styles.active
                                     )}
                                 >
-                                    <li className={styles.item}>
+                                    <li className={classes(styles.dropdownitem, styles.item)}>
                                         <NavLink
                                             activeclassname={styles.active}
                                             className={styles.link}
@@ -141,7 +141,7 @@ const Menu = ({ active, setActive }) => {
                                             LMS
                                         </NavLink>
                                     </li>
-                                    <li className={styles.item}>
+                                    <li className={classes(styles.dropdownitem, styles.item)}>
                                         <NavLink
                                             activeclassname={styles.active}
                                             className={styles.link}
@@ -154,7 +154,7 @@ const Menu = ({ active, setActive }) => {
                                             Leaderboard
                                         </NavLink>
                                     </li>
-                                    <li className={classes(styles.item, styles.last)}>
+                                    <li className={classes(styles.dropdownitem, styles.item, styles.last)}>
                                         <a
                                             href={"https://froyo.farm/#/avax"}
                                             className={styles.link}
