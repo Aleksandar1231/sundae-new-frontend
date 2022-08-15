@@ -83,7 +83,7 @@ const Menu = ({ active, setActive }) => {
                                 toggle();
                             }}
                         >
-                            LMS
+                            Last Man Standing
                         </NavLink>
                     </li>
                     <li className={styles.item}>
@@ -99,7 +99,7 @@ const Menu = ({ active, setActive }) => {
                             Leaderboard
                         </NavLink>
                     </li>
-                    <li className={classes(styles.item, styles.last)}>
+                    <li className={classes(styles.item)}>
                         <a
                             href={"https://froyo.farm/#/avax"}
                             className={styles.link}
@@ -107,6 +107,16 @@ const Menu = ({ active, setActive }) => {
                             rel={"noreferrer"}
                         >
                             Vault
+                        </a>
+                    </li>
+                    <li className={classes(styles.item, styles.last)}>
+                        <a
+                            href={"https://icecreamfinancial.gitbook.io/sundae-finance/"}
+                            className={styles.link}
+                            target={"_blank"}
+                            rel={"noreferrer"}
+                        >
+                            Documentation
                         </a>
                     </li>
                 </>
@@ -138,7 +148,7 @@ const Menu = ({ active, setActive }) => {
                                                 toggle();
                                             }}
                                         >
-                                            LMS
+                                            Last Man Standing
                                         </NavLink>
                                     </li>
                                     <li className={classes(styles.dropdownitem, styles.item)}>
@@ -154,7 +164,7 @@ const Menu = ({ active, setActive }) => {
                                             Leaderboard
                                         </NavLink>
                                     </li>
-                                    <li className={classes(styles.dropdownitem, styles.item, styles.last)}>
+                                    <li className={classes(styles.dropdownitem, styles.item)}>
                                         <a
                                             href={"https://froyo.farm/#/avax"}
                                             className={styles.link}
@@ -162,6 +172,16 @@ const Menu = ({ active, setActive }) => {
                                             rel={"noreferrer"}
                                         >
                                             Vault
+                                        </a>
+                                    </li>
+                                    <li className={classes(styles.dropdownitem, styles.item, styles.last)}>
+                                        <a
+                                            href={"https://icecreamfinancial.gitbook.io/sundae-finance/"}
+                                            className={styles.link}
+                                            target={"_blank"}
+                                            rel={"noreferrer"}
+                                        >
+                                            Documentation
                                         </a>
                                     </li>
 
