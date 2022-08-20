@@ -27,8 +27,8 @@ const Banners = () => {
     const masonryAPR = useFetchMasonryAPR();
     const scalingFactor = useMemo(() => (cashStat ? Number(cashStat.priceInDollars).toFixed(4) : null), [cashStat]);
 
-    const from = moment('2022-07-31 12:00:00Z');
-    const to = moment('2022-08-14 12:00:00Z');
+    const from = moment('2022-08-20 12:00:00Z');
+    const to = moment('2022-08-28 12:00:00Z');
 
     useEffect(() => {
         fetchLeaderboardData();

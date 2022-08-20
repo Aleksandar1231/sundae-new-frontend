@@ -682,9 +682,12 @@ export class TombFinance {
 
     const TSHAREPrice = (await this.getShareStat()).priceInDollars;
     const masonrytShareBalanceOf = await this.TSHARE.balanceOf(this.currentMasonry().address);
+    const TBONDPrice = (await this.getBondStat()).priceInDollars;
+    const TBONDTotal = (await this.getBondStat()).totalSupply;
+    const bondTVL = Number(TBONDPrice) * Number(TBONDTotal);
     const masonryTVL = Number(getDisplayBalance(masonrytShareBalanceOf, this.TSHARE.decimal)) * Number(TSHAREPrice);
 
-    return totalValue + masonryTVL;
+    return totalValue + masonryTVL + bondTVL;
   }
 
   /**
