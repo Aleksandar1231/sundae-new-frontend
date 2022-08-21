@@ -31,9 +31,9 @@
   @include flex($align-items: flex-start, $direction: column);
   text-align: center;
   padding: 0 10px;
-  margin: 10px 0;
+  margin: 2px 0;
   border-radius: 10px;
-  border: 1px solid white;
+  border: 2px solid #993FA0;
   list-style: none;
   position: fixed;
   background-color: var(--menu-color);
@@ -60,7 +60,6 @@
 
 .dropdownitem {
   padding: 10px 0;
-  border-bottom: 1px solid white;
   width: 100%;
   text-align: left;
 
