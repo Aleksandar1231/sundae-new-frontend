@@ -178,21 +178,23 @@
 
 .bottom2 {
   @include flex($justify-content: space-between);
-  padding: 15px;
+  padding: 10px;
   border-top: 1px solid #C4C4C4;
 }
 
 .button2 {
-  //max-width: 150px;
   text-align: center;
+  margin-top: 15px;
+  
 
   & button {
     width: 100%;
-    display: inline-block;
+    justify-content: center;
+    align-items: center;
   }
 
   @include media-max(map_get($brackpoints, xl) - 1) {
-    max-width: 135px;
+    max-width: 200px;
 
   }
 }

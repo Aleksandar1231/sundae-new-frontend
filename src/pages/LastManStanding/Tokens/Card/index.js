@@ -7,6 +7,7 @@ import { BtnType, DynamicObject, Size, Symbol } from '../../types';
 import FarmDepositModal from "../../../../components/DepositModal";
 import { useDispatch } from "react-redux";
 import { Box, Button, CardActions, CardContent, Typography, Grid, Container } from '@material-ui/core';
+// import Button from "../Button";
 import FarmWithDrawModal from "../../../../components/WithDrawModal";
 import TombFinance from '../../ethereum/TombFinance';
 import useMediaQuery from '../../../../hooks/useMediaQuery';
