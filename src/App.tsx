@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { routes } from './routing/mainRoutes';
 
 import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 // import MetaTags from "react-meta-tags";
 import Routing from "./components/Routing";
 import Loader from './components/Loader';
@@ -54,11 +54,11 @@ const App = () => {
                             <ModalsProvider>
                                 <BanksProvider>
                                     <Suspense fallback={<Loader />}>
-                                        <BrowserRouter>
+                                        <HashRouter>
                                             <Page>
                                                 <Routing {...{ routes }} />
                                             </Page>
-                                        </BrowserRouter>
+                                        </HashRouter>
                                     </Suspense>
                                 </BanksProvider>
                             </ModalsProvider>
