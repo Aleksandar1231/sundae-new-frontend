@@ -10,7 +10,7 @@ import styles from './index.module.scss';
 const Menu = ({ active, setActive }) => {
     const theme = useTheme();
     const [isVisible, setIsVisible] = useState(false);
-    const toggle = () => { setIsVisible(!isVisible) }
+    const toggle = () => { setIsVisible(!isVisible)}
     const matches = useMediaQuery(theme.breakpoints.down('lg'));
 
     return (
@@ -121,21 +121,22 @@ const Menu = ({ active, setActive }) => {
                     </li>
                 </>
             ) :
-                (<li className={styles.item}>
+                (<li className={styles.item} onMouseEnter={toggle} onMouseLeave={toggle}>
                     {!isVisible ?
                         <a className={classes(
                             styles.link, active && styles.active
-                        )} onClick={toggle}>More</a>
+                        )} >More</a>
                         : (
-                            <>
+                            
+                            < >
                                 <a className={classes(
                                     styles.link, active && styles.active
-                                )} onClick={toggle}>More</a>
+                                )}  >More</a>
 
                                 <ul
                                     className={classes(
                                         styles.dropdownblock,
-                                        active && styles.active
+                                        active && styles.active,
                                     )}
                                 >
                                     <li className={classes(styles.dropdownitem, styles.item)}>
@@ -145,7 +146,7 @@ const Menu = ({ active, setActive }) => {
                                             to="/lastmanstanding"
                                             onClick={() => {
                                                 setActive(false);
-                                                toggle();
+                                                
                                             }}
                                         >
                                             Last Man Standing
@@ -158,7 +159,7 @@ const Menu = ({ active, setActive }) => {
                                             to="/leaderboard"
                                             onClick={() => {
                                                 setActive(false);
-                                                toggle();
+                                                
                                             }}
                                         >
                                             Leaderboard
