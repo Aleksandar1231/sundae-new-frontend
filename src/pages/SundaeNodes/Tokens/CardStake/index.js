@@ -103,7 +103,7 @@ const CardStake = ({ bank }) => {
                                         type={'link'}
                                         placeholder={'Leaderboard'}
                                         classname={'primary'}
-                                        action={'/leaderboard'}
+                                        action={'https://sundaefinance.app/#/leaderboard'}
 
                                     />
                                 </div>
