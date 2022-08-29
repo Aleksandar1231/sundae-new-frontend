@@ -13,8 +13,8 @@ const NodeLeaderboard = () => {
   const [leaderboardData, setLeaderboardData] = useState(null);
 
 
-  const from = moment('2022-08-21 12:00:00Z');
-  const to = moment('2022-08-28 12:00:00Z');
+  const from = moment('2022-08-28 12:00:00Z');
+  const to = moment('2022-09-04 12:00:00Z');
 
   useEffect(() => {
     fetchLeaderboardData();

@@ -5,6 +5,7 @@ const Home = lazy(() => import("../pages/Home"));
 const Bonds = lazy(() => import("../pages/Bonds"));
 const Boardrooms = lazy(() => import("../pages/Boardrooms"));
 const Farm = lazy(() => import("../pages/Farm"));
+const Freezer = lazy(() => import("../pages/Freezer"));
 const SundaeNodes = lazy(() => import("../pages/SundaeNodes"));
 const Treasury = lazy(() => import("../pages/Treasury"));
 const KoCPage = lazy(() => import("../pages/LastManStanding"));
@@ -33,6 +34,12 @@ export const routes = [
     {
         path: '/farm',
         element: <Farm />,
+        exact: false,
+        role: [0, 1]
+    },
+    {
+        path: '/freezer',
+        element: <Freezer />,
         exact: false,
         role: [0, 1]
     },

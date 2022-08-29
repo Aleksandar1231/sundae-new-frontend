@@ -1,5 +1,5 @@
 import ERC20 from './ERC20';
-
+import { BigNumber } from 'ethers';
 export type ContractName = string;
 
 export interface BankInfo {
@@ -63,4 +63,33 @@ export type Call = {
   address: string // Address of the contract
   name: string // Function name on the contract (exemple: balanceOf)
   params?: any[] // Function params
+};
+
+export interface PegPoolUserInfo {
+  amountDeposited: string;
+  amountDepositedBN: BigNumber;
+  isDeposited: boolean;
+};
+
+export interface PegPool {
+  depositsEnabled: boolean;
+  totalDesposits: string;
+  depositToken: ERC20;
+  depositTokenName: string;
+  userInfo?: PegPoolUserInfo;
+  approved: boolean;
+}
+
+export interface PegPoolToken {
+  name: string;
+  token: ERC20;
+  pairAddress: string;
+  amount?: string;
+  image?: string;
+  pendingValue?: string;
+  pendingValueBN?: BigNumber;
+  currentPrice?: string;
+  currentPriceNum?: number;
+  rewardPerBlock: number;
+  canCompound: boolean;
 }

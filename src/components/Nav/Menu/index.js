@@ -99,6 +99,19 @@ const Menu = ({ active, setActive }) => {
                             Leaderboard
                         </NavLink>
                     </li>
+                    {/* <li className={styles.item}>
+                        <NavLink
+                            activeclassname={styles.active}
+                            className={styles.link}
+                            to="/freezer"
+                            onClick={() => {
+                                setActive(false);
+                                toggle();
+                            }}
+                        >
+                            Freezer
+                        </NavLink>
+                    </li> */}
                     <li className={classes(styles.item)}>
                         <a
                             href={"https://froyo.farm/#/avax"}
@@ -165,6 +178,19 @@ const Menu = ({ active, setActive }) => {
                                             Leaderboard
                                         </NavLink>
                                     </li>
+                                    {/* <li className={classes(styles.dropdownitem, styles.item)}>
+                                        <NavLink
+                                            activeclassname={styles.active}
+                                            className={styles.link}
+                                            to="/freezer"
+                                            onClick={() => {
+                                                setActive(false);
+                                                
+                                            }}
+                                        >
+                                            Freezer
+                                        </NavLink>
+                                    </li> */}
                                     <li className={classes(styles.dropdownitem, styles.item)}>
                                         <a
                                             href={"https://froyo.farm/#/avax"}
