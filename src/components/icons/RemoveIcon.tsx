@@ -4,10 +4,10 @@ import {ThemeContext} from 'styled-components';
 import Icon, {IconProps} from "../IconCustom";
 
 const RemoveIcon: React.FC<IconProps> = ({color}) => {
-    const {color: themeColor} = useContext(ThemeContext);
+    const themeColor = "#000"
     return (
         <Icon>
-            <svg viewBox="0 0 24 24" fill={color ? color : themeColor.grey[400]} width="18px" height="18px">
+            <svg viewBox="0 0 24 24" fill={color ? color : themeColor} width="18px" height="18px">
                 <path d="M0 0h24v24H0z" fill="none"/>
                 <path d="M19 13H5v-2h14v2z"/>
             </svg>

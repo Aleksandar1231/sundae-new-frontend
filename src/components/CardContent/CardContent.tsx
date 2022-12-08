@@ -1,5 +1,11 @@
 import React from 'react';
 
-const CardContent: React.FC = ({children}) => <div>{children}</div>;
+interface Props {
+    children: React.ReactNode;
+}
+  
+
+
+const CardContent: React.FC<Props> = ({children}) => <div>{children}</div>;
 
 export default CardContent;

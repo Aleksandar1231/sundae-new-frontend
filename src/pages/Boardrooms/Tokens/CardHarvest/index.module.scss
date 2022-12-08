@@ -32,7 +32,7 @@
 }
 
 .top {
-  @include flex(center, center);
+  @include flex(center, center, );
 
   border-bottom: 1px solid #C4C4C4;
   padding-bottom: 15px;

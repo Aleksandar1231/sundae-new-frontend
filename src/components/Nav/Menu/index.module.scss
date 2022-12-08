@@ -27,6 +27,47 @@
   }
 }
 
+.dropdownblock {
+  @include flex($align-items: flex-start, $direction: column);
+  text-align: center;
+  padding: 0 10px;
+  margin: 2px 0;
+  border-radius: 10px;
+  border: 2px solid #993FA0;
+  list-style: none;
+  position: fixed;
+  background-color: var(--menu-color);
+
+  @include media-max(map_get($brackpoints, lg) - 1) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    padding: 15px 0;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateX(-100%);
+    transition: var(--default-transition);
+    background-color: var(--menu-color);
+    width: 100%;
+  }
+
+  &.active {
+    transform: translateX(0);
+  }
+}
+
+.dropdownitem {
+  padding: 10px 0;
+  width: 100%;
+  text-align: left;
+
+  &.last {
+    border-bottom: 0;
+  }
+}
+
 .item {
   margin-right: 60px;
 

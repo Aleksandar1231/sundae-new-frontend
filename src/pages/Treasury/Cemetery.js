@@ -1,6 +1,6 @@
 import React from 'react';
 import {useWallet} from 'use-wallet';
-import {Route, Switch, useRouteMatch} from 'react-router-dom';
+import {Route, useMatch} from 'react-router-dom';
 import CountUp from 'react-countup';
 import Bank from '../Bank';
 import {makeStyles} from '@material-ui/core/styles';
@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 const Cemetery = () => {
     const classes = useStyles();
     const [banks] = useBanks();
-    const {path} = useRouteMatch();
+    const { path } = useMatch('/treasury');
     const {account} = useWallet();
     const activeBanks = banks.filter((bank) => !bank.finished);
     const {
@@ -75,7 +75,6 @@ const Cemetery = () => {
         balance_2shares
     } = useTotalTreasuryBalance();
     return (
-        <Switch>
             <Page>
                 <Route exact path={path}>
                     <BackgroundImage/>
@@ -197,7 +196,6 @@ const Cemetery = () => {
                     <Bank/>
                 </Route>
             </Page>
-        </Switch>
     );
 };
 

@@ -1,0 +1,98 @@
+@import '../../../styles/config';
+
+$outher: 0px;
+
+.list {
+  @include flex($justify-content: center, $wrap: nowrap);
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    flex-wrap: wrap;
+  }
+}
+
+.card {
+  @include flex($justify-content: center, $wrap: nowrap);
+  padding: 0 10px;
+  flex: 1;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &.top {
+    animation: slide-2 3s ease-in-out 0.2s infinite;
+  }
+
+  &.bottom {
+    padding-top: $outher;
+    animation: slide-1 3s ease-in-out 0.2s infinite;
+  }
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    @include flex(center);
+
+    flex: 1 1 33.3%;
+    max-width: 33.3%;
+  }
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    flex: 1 1 50%;
+    max-width: 50%;
+  }
+
+
+  &:nth-child(4),
+  &:nth-child(6) {
+
+    @include media-max(map_get($brackpoints, xl) - 1) {
+      padding-top: 0;
+    }
+
+    @include media-max(map_get($brackpoints, md) - 1) {
+      padding-top: $outher;
+    }
+  }
+
+  &:nth-child(5) {
+
+    @include media-max(map_get($brackpoints, xl) - 1) {
+      padding-top: $outher;
+    }
+
+    @include media-max(map_get($brackpoints, md) - 1) {
+      padding-top: 0;
+    }
+  }
+}
+
+@keyframes slide-1 {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  50% {
+    transform: translate(0, 5px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes slide-2 {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  50% {
+    transform: translate(0, -5px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+  }
+}

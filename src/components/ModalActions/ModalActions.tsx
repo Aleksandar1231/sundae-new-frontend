@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ModalActions: React.FC = ({ children }) => {
+interface Props {
+  children: React.ReactNode;
+}
+
+
+const ModalActions: React.FC<Props> = ({ children }) => {
   const l = React.Children.toArray(children).length;
   return (
     <StyledModalActions>

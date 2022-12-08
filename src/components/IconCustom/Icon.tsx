@@ -6,7 +6,12 @@ export interface IconProps {
     children?: string;
 }
 
-const Icon: React.FC = ({children}) => <StyledIcon>{children}</StyledIcon>;
+interface Props {
+    children: React.ReactNode;
+  }
+  
+
+const Icon: React.FC<Props> = ({children}) => <StyledIcon>{children}</StyledIcon>;
 
 const StyledIcon = styled.div``;
 
